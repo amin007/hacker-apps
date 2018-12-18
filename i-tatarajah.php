@@ -91,8 +91,4 @@ define('MSICBARU', serialize (
 		$e.'msic',$e.'msic_nota_kaki')
 	));
 ## untuk table login
-# namaPenuh,namaPendek,email,kataLaluan,level
-$loginMedan01 = 'namaPengguna as namaPendek,`kataLaluan`,`level`,Nama_Penuh as namaPenuh,`email`,`nohp`';
-define('JADUAL_LOGIN', serialize(
-	array ('nama_pengguna','email|nohp','kataLaluan',$loginMedan01)
-	));
+require 'i-tatarajah2.php';
