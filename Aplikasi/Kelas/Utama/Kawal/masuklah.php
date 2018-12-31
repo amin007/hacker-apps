@@ -79,6 +79,11 @@ class Masuklah extends \Aplikasi\Kitab\Kawal
 		return $cincang['password_hash'];
 	}
 #-------------------------------------------------------------------------------------------
+	function semakData($a,$b)
+	{
+		
+	}
+#-------------------------------------------------------------------------------------------
 	function semakSiapa()
 	{
 		//echo '<hr>Nama class :' . __METHOD__ . '<hr>';
