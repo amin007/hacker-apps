@@ -59,17 +59,17 @@ class RahsiaHash
 #---------------------------------------------------------------------------------------------
 	public static function cariPisau($password)
 	{
-		$i = 5;
+		$i = 5; $garam = 'garamJenama2Apa?';
 		#http://php.net/manual/en/function.str-shuffle.php
 		$pisau['str_shuffle'] = str_shuffle($password);
 		#http://php.net/manual/en/function.random-int.php
-		$pisau['random_int'] = random_int($min = 0, $max = $i);
+		$pisau['random_int'] = random_int($min=0,$max=$i);
 		#http://php.net/manual/en/function.random-bytes.php
 		$pisau['random_bytes'] = random_bytes($i);
 		#http://php.net/manual/en/function.openssl-random-pseudo-bytes.php
-		$pisau['openssl_random_pseudo_bytes'] = openssl_random_pseudo_bytes($i, $password);
+		$pisau['openssl_random_pseudo_bytes'] = openssl_random_pseudo_bytes($i,$password);
 		#http://php.net/manual/en/function.crypt.php
-		$pisau['crypt'] = crypt($password);
+		$pisau['crypt'] = crypt($password,$garam);
 		#http://php.net/manual/en/function.uniqid.php
 		$pisau['uniqid'] = uniqid();
 		#http://php.net/manual/en/function.mt-rand.php
@@ -77,6 +77,7 @@ class RahsiaHash
 		#http://php.net/manual/en/function.mt-srand.php
 		$pisau['mt_srand'] = mt_srand();
 		#http://php.net/manual/en/function.password-hash.php
+		$pisau['password_hash'] = password_hash($password, PASSWORD_DEFAULT);
 
 		return $pisau;//*/
 	}
