@@ -66,9 +66,9 @@ body{
 <form class="form-signin" method="POST" action="masuklah">
 	<h1 class="h3 mb-3 font-weight-normal">Sila Daftar Masuk</h1>
 	<label for="inputText" class="sr-only">Email address / Handphone</label>
-	<input type="text" name="name" id="inputText" class="form-control" placeholder="Email address / Handphone" required autofocus>
+	<input type="text" name="username" id="inputText" class="form-control" placeholder="Email address / Handphone" required autofocus>
 	<label for="inputPassword" class="sr-only">Password</label>
-	<input type="password" name="Password" id="inputPassword" class="form-control" placeholder="Password" required>
+	<input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
 	<div class="checkbox mb-3">
 		<label><input type="checkbox" value="remember-me"> Remember me </label>
 	</div>
