@@ -69,9 +69,11 @@ class Masuklah extends \Aplikasi\Kitab\Kawal
 	function semakSiapa()
 	{
 		//echo '<hr>Nama class :' . __METHOD__ . '<hr>';
+		# Set pembolehubah utama
 		$email = $_POST['username'];
 		$passwordAsal = $_POST['password'];
 		$password = \Aplikasi\Kitab\RahsiaHash::rahsia('md5', $passwordAsal);
+		list($myTable, $medan, $carian) = $this->tanya->dapatPencam($email,$password);
 		# mula cari $cariID dalam $myJadual
 			$cariNama =
 				//$this->tanya->cariSemuaData($myTable, $medan, $carian, null);
