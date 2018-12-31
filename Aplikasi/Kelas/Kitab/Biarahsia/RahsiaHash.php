@@ -59,11 +59,11 @@ class RahsiaHash
 #---------------------------------------------------------------------------------------------
 	public static function cariPisau($password)
 	{
-		$i = 5; $garam = 'garamJenama2Apa?';
+		$min = 0; $i = 5; $garam = 'garamJenama2Apa?';
 		#http://php.net/manual/en/function.str-shuffle.php
 		$pisau['str_shuffle'] = str_shuffle($password);
 		#http://php.net/manual/en/function.random-int.php
-		$pisau['random_int'] = random_int($min=0,$max=$i);
+		$pisau['random_int'] = random_int($min,$max=$i);
 		#http://php.net/manual/en/function.random-bytes.php
 		$pisau['random_bytes'] = random_bytes($i);
 		#http://php.net/manual/en/function.openssl-random-pseudo-bytes.php
@@ -76,6 +76,8 @@ class RahsiaHash
 		$pisau['mt_rand'] = mt_rand();
 		#http://php.net/manual/en/function.mt-srand.php
 		$pisau['mt_srand'] = mt_srand();
+		#http://php.net/manual/en/function.sodium-crypto-pwhash-str.php
+		//$pisau['sodium_crypto_pwhash_str'] = sodium_crypto_pwhash_str($password,$min,$i);
 		#http://php.net/manual/en/function.password-hash.php
 		$pisau['password_hash'] = password_hash($password,PASSWORD_DEFAULT);
 		$options = ['cost' => 12];
@@ -87,6 +89,8 @@ class RahsiaHash
 		#define
 		$pisau['PASSWORD_DEFAULT'] = PASSWORD_DEFAULT;
 		$pisau['PASSWORD_BCRYPT'] = PASSWORD_BCRYPT;
+		//$pisau['CRYPT_DEV_URANDOM'] = CRYPT_DEV_URANDOM;
+		#http://php.net/manual/en/refs.crypto.php
 		#//*/
 		return $pisau;
 	}
