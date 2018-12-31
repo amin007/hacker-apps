@@ -80,7 +80,10 @@ class RahsiaHash
 		$pisau['password_hash'] = password_hash($password,PASSWORD_DEFAULT);
 		$options = ['cost' => 12];
 		$pisau['password_hash_bcrypt'] = password_hash($password,PASSWORD_BCRYPT,$options);
+		#php 7.2.0 : Support for Argon2i passwords using PASSWORD_ARGON2I was added.
 		//$pisau['password_hash_argon21'] = password_hash($password,PASSWORD_ARGON2I);
+		#php 7.3.0 : Support for Argon2id passwords using PASSWORD_ARGON2ID was added.
+		//$pisau['password_hash_argon21'] = password_hash($password,PASSWORD_ARGON2ID);
 		#define
 		$pisau['PASSWORD_DEFAULT'] = PASSWORD_DEFAULT;
 		$pisau['PASSWORD_BCRYPT'] = PASSWORD_BCRYPT;
