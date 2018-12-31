@@ -81,6 +81,10 @@ class Masuklah extends \Aplikasi\Kitab\Kawal
 #-------------------------------------------------------------------------------------------
 	function semakData($a,$b)
 	{
+		$c[] = $b;
+		$c[] = '$2y$10$22GYAdTOotuNmFiMhAgJk.Qzv0I819OyZ7qZtBDRvKIwGSLlojeju';
+		$c[] = '$2y$10$BUmTzUItMY5jdLvDhjFrXOFFvgVmFoKp5Gn80yRHzlfobHdt.IJou';
+
 		if (password_verify($a, $b))
 		{
 			echo '<br>Password is valid!';
