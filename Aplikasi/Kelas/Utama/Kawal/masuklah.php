@@ -45,7 +45,7 @@ class Masuklah extends \Aplikasi\Kitab\Kawal
 ##------------------------------------------------------------------------------------------
 	public function semakPembolehubah($senarai,$jadual)
 	{
-		echo '<pre>' . $jadual . '=>';
+		echo '<pre>$' . $jadual . '=>';
 		print_r($senarai); echo '</pre>';//*/
 		//$this->semakPembolehubah($ujian,'ujian');
 	}

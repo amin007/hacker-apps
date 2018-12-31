@@ -11,7 +11,7 @@ class Masuklah_Tanya extends \Aplikasi\Kitab\Tanya
 #------------------------------------------------------------------------------------------#
 	public function semakPembolehubah($senarai,$jadual)
 	{
-		echo '<pre>' . $jadual . '=>';
+		echo '<pre>$' . $jadual . '=>';
 		print_r($senarai); echo '</pre>';//*/
 		//$this->semakPembolehubah($ujian,'ujian');
 	}
