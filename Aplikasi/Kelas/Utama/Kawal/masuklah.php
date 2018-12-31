@@ -73,7 +73,9 @@ class Masuklah extends \Aplikasi\Kitab\Kawal
 		# semak hash yang boleh digunakan
 		$passwordAsal = $_POST['password'];
 		$pisau = \Aplikasi\Kitab\RahsiaHash::cariPisau($passwordAsal);
-		$this->semakPembolehubah($pisau,'pisau');
+		$cincang = $this->semakPembolehubah($pisau,'pisau');
+
+		return $cincang['password_hash'];
 	}
 #-------------------------------------------------------------------------------------------
 	function semakSiapa()
