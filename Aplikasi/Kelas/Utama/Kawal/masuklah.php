@@ -16,8 +16,8 @@ class Masuklah extends \Aplikasi\Kitab\Kawal
 	public function index()
 	{
 		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
-		//$this->semakID();
-		$this->semakSiapa();
+		$this->semakID();
+		//$this->semakSiapa();
 
 		# Pergi papar kandungan
 		/*$this->_folder = 'cari';
