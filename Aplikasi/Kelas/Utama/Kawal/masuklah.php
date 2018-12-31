@@ -16,7 +16,8 @@ class Masuklah extends \Aplikasi\Kitab\Kawal
 	public function index()
 	{
 		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
-		$this->semakID(); # Set pembolehubah utama
+		//$this->semakID();
+		$this->semakSiapa();
 
 		# Pergi papar kandungan
 		/*$this->_folder = 'cari';
@@ -65,6 +66,35 @@ class Masuklah extends \Aplikasi\Kitab\Kawal
 		$this->semakPembolehubah($_POST,'POST');
 	}
 #-------------------------------------------------------------------------------------------
+	function semakSiapa();
+		//echo '<hr>Nama class :' . __METHOD__ . '<hr>';
+		# semak data $_POST
+		list($myTable, $medan01, $medan02, $medan) = dpt_senarai('jadual_login');
+		$email = $_POST['username'];
+		$passwordAsal = $_POST['password'];
+		$password = \Aplikasi\Kitab\RahsiaHash::rahsia('md5', $passwordAsal);
+		# semak database
+			$carian[] = array('fix'=>'or(x=)', # cari x= atau %like%
+				'atau'=>'WHERE', # WHERE / OR / AND
+				'medan' => $medan01, # cari dalam medan apa
+				'apa' => $email); # benda yang dicari
+			$carian[] = array('fix'=>'like', # cari x= atau %like%
+				'atau'=>'AND', # WHERE / OR / AND
+				'medan' => $medan02, # cari dalam medan apa
+				'apa' => $password); # benda yang dicari
+		# mula cari $cariID dalam $myJadual
+			$cariNama =
+				//$this->tanya->cariSemuaData("`$myTable`", $medan, $carian, null);
+				$this->tanya->cariSql("`$myTable`", $medan, $carian, null);
+				$kira = sizeof($cariNama);//*/
+		# semak pembolehubah
+		$this->semakPembolehubah($_POST,'POST');
+		$this->semakPembolehubah($password,'password');
+		$this->semakPembolehubah($cariNama,'cariNama');
+		echo '<hr>$data->' . sizeof($cariNama) . '<hr>';//*/
+
+		//$this->kunciPintu($kira, $cariNama); # pilih pintu masuk
+	}
 #-------------------------------------------------------------------------------------------
 #===========================================================================================
 }
