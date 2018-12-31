@@ -66,7 +66,8 @@ class Masuklah extends \Aplikasi\Kitab\Kawal
 		$this->semakPembolehubah($_POST,'POST');
 	}
 #-------------------------------------------------------------------------------------------
-	function semakSiapa();
+	function semakSiapa()
+	{
 		//echo '<hr>Nama class :' . __METHOD__ . '<hr>';
 		# semak data $_POST
 		list($myTable, $medan01, $medan02, $medan) = dpt_senarai('jadual_login');
@@ -86,7 +87,7 @@ class Masuklah extends \Aplikasi\Kitab\Kawal
 			$cariNama =
 				//$this->tanya->cariSemuaData("`$myTable`", $medan, $carian, null);
 				$this->tanya->cariSql("`$myTable`", $medan, $carian, null);
-				$kira = sizeof($cariNama);//*/
+				$kira = sizeof($cariNama);//*
 		# semak pembolehubah
 		$this->semakPembolehubah($_POST,'POST');
 		$this->semakPembolehubah($password,'password');
