@@ -63,6 +63,7 @@ class Masuklah extends \Aplikasi\Kitab\Kawal
 	{# untuk paparkan jadual sahaja
 		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
 		$cincang = $this->semakCincang();
+		$this->semakData($_POST['password'],$cincang);
 	}
 #-------------------------------------------------------------------------------------------
 	function semakCincang()
