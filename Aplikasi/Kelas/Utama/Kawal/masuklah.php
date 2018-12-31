@@ -61,10 +61,8 @@ class Masuklah extends \Aplikasi\Kitab\Kawal
 #-------------------------------------------------------------------------------------------
 	function semakID()
 	{# untuk paparkan jadual sahaja
-		echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
-		# Set pembolehubah utama
-		$this->semakPembolehubah($_POST,'POST');
-		$this->semakCincang()
+		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
+		$cincang = $this->semakCincang();
 	}
 #-------------------------------------------------------------------------------------------
 	function semakCincang()
