@@ -74,8 +74,8 @@ class Masuklah extends \Aplikasi\Kitab\Kawal
 		$password = \Aplikasi\Kitab\RahsiaHash::rahsia('md5', $passwordAsal);
 		# mula cari $cariID dalam $myJadual
 			$cariNama =
-				//$this->tanya->cariSemuaData("`$myTable`", $medan, $carian, null);
-				$this->tanya->cariSql("`$myTable`", $medan, $carian, null);
+				//$this->tanya->cariSemuaData($myTable, $medan, $carian, null);
+				$this->tanya->cariSql($myTable, $medan, $carian, null);
 				$kira = sizeof($cariNama);//*
 		# semak pembolehubah
 		$this->semakPembolehubah($_POST,'POST');
