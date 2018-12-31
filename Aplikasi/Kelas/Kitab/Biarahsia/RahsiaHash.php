@@ -87,8 +87,8 @@ class RahsiaHash
 		#php 7.3.0 : Support for Argon2id passwords using PASSWORD_ARGON2ID was added.
 		//$pisau['password_hash_argon21'] = password_hash($password,PASSWORD_ARGON2ID);
 		#define
-		$pisau['PASSWORD_DEFAULT'] = PASSWORD_DEFAULT;
-		$pisau['PASSWORD_BCRYPT'] = PASSWORD_BCRYPT;
+		//$pisau['PASSWORD_DEFAULT'] = PASSWORD_DEFAULT;
+		//$pisau['PASSWORD_BCRYPT'] = PASSWORD_BCRYPT;
 		//$pisau['CRYPT_DEV_URANDOM'] = CRYPT_DEV_URANDOM;
 		#http://php.net/manual/en/refs.crypto.php
 		#//*/
