@@ -68,15 +68,15 @@ class Masuklah extends \Aplikasi\Kitab\Kawal
 #-------------------------------------------------------------------------------------------
 	function semakCincang()
 	{
-		echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
+		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
 		# Set pembolehubah utama
 		$this->semakPembolehubah($_POST,'POST');
 		# semak hash yang boleh digunakan
 		$passwordAsal = $_POST['password'];
 		$pisau = \Aplikasi\Kitab\RahsiaHash::cariPisau($passwordAsal);
-		$cincang = $this->semakPembolehubah($pisau,'pisau');
+		//$this->semakPembolehubah($pisau,'pisau');
 
-		return $cincang['password_hash'];
+		return $pisau['password_hash'];
 	}
 #-------------------------------------------------------------------------------------------
 	function semakData($a,$b)
