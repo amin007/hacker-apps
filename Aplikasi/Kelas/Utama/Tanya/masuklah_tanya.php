@@ -16,7 +16,7 @@ class Masuklah_Tanya extends \Aplikasi\Kitab\Tanya
 		//$this->semakPembolehubah($ujian,'ujian');
 	}
 #------------------------------------------------------------------------------------------#
-	function dapatPencam()
+	function dapatPencam($email,$password)
 	{
 		# semak data $_POST
 		list($myTable, $medan01, $medan02, $medan) = dpt_senarai('jadual_login');
