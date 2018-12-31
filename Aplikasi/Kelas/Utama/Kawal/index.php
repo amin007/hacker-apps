@@ -21,7 +21,7 @@ class Index extends \Aplikasi\Kitab\Kawal
 		# Pergi papar kandungan
 		$fail = array('index','login','login_automatik');
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
-		$this->paparKandungan($this->_folder, $fail[1], $noInclude=1);
+		$this->paparKandungan($this->_folder, $fail[2], $noInclude=1);
 	}
 ##------------------------------------------------------------------------------------------
 	public function paparKandungan($folder, $fail, $noInclude)
