@@ -77,9 +77,15 @@ class RahsiaHash
 		#http://php.net/manual/en/function.mt-srand.php
 		$pisau['mt_srand'] = mt_srand();
 		#http://php.net/manual/en/function.password-hash.php
-		$pisau['password_hash'] = password_hash($password, PASSWORD_DEFAULT);
-
-		return $pisau;//*/
+		$pisau['password_hash'] = password_hash($password,PASSWORD_DEFAULT);
+		$options = ['cost' => 12];
+		$pisau['password_hash_bcrypt'] = password_hash($password,PASSWORD_BCRYPT,$options);
+		//$pisau['password_hash_argon21'] = password_hash($password,PASSWORD_ARGON2I);
+		#define
+		$pisau['PASSWORD_DEFAULT'] = PASSWORD_DEFAULT;
+		$pisau['PASSWORD_BCRYPT'] = PASSWORD_BCRYPT;
+		#//*/
+		return $pisau;
 	}
 #---------------------------------------------------------------------------------------------
 #=============================================================================================
