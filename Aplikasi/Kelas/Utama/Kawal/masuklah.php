@@ -81,7 +81,15 @@ class Masuklah extends \Aplikasi\Kitab\Kawal
 #-------------------------------------------------------------------------------------------
 	function semakData($a,$b)
 	{
-		
+		if (password_verify($a, $b))
+		{
+			echo '<br>Password is valid!';
+		}
+		else
+		{
+			echo '<br>Invalid password.';
+		}
+		#//*/
 	}
 #-------------------------------------------------------------------------------------------
 	function semakSiapa()
