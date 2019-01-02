@@ -135,14 +135,13 @@ class Masuklah extends \Aplikasi\Kitab\Kawal
 		$password = \Aplikasi\Kitab\RahsiaHash::rahsia('md5', $passwordAsal);
 		list($myTable, $medan, $carian) = $this->tanya->dapatPencam($email,$password);
 		# mula cari $cariID dalam $myJadual
-			$cariNama =
-				//$this->tanya->cariSemuaData($myTable, $medan, $carian, null);
-				$this->tanya->cariSql($myTable, $medan, $carian, null);
-				$kira = sizeof($cariNama);//*
+			$cariTanya = $this->tanya->cariSql($myTable, $medan, $carian, null);
+			$cariNama = $this->tanya->cariSemuaData($myTable, $medan, $carian, null);
+			$kira = sizeof($cariNama);//*
 		# semak pembolehubah
-		$this->semakPembolehubah($_POST,'POST');
-		$this->semakPembolehubah($password,'password');
-		$this->semakPembolehubah($cariNama,'cariNama');
+		$this->semakPembolehubah($_POST,'1.POST');
+		$this->semakPembolehubah($password,'2.password');
+		$this->semakPembolehubah($cariNama,'3.cariNama');
 		echo '<hr>$data->' . sizeof($cariNama) . '<hr>';//*/
 
 		//$this->kunciPintu($kira, $cariNama); # pilih pintu masuk
