@@ -110,7 +110,7 @@ class="btn btn-link"
 		$senaraiInput = array('text|namaPengguna','password|kataLaluan','password|ulangKataLaluan',
 			'text|Nama_Penuh','text|email','text|nohp');
 		foreach($senaraiInput as $key): list($type,$name) = explode('|',$key); echo "\n\t\t";
-		?><input type="<?php echo $type ?>" name="biodata[<?php echo $name ?>]" class="form-control"<?php
+		?><input type="<?php echo $type ?>" name="nama_pengguna[<?php echo $name ?>]" class="form-control"<?php
 		?> placeholder="<?php echo $name ?>"><?php
 		endforeach; echo "\n\t\t";
 		?><input type="submit" value="Simpan" class="btn btn-lg btn-dark btn-block">
