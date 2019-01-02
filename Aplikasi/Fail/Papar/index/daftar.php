@@ -105,11 +105,12 @@ class="btn btn-link"
 	<!--*********************************************************************************************************************************************** -->
 		<h1 class="h3 mb-3 font-weight-normal">Borang Biodata</h1>
 		<?php 
-		$senaraiInput = array('namaPengguna','kataLaluan','ulangKataLaluan',
-			'Nama_Penuh','email','nohp');
-		foreach($senaraiInput as $name):?>
+		$senaraiInput = array('text|namaPengguna','password|kataLaluan','password|ulangKataLaluan',
+			'text|Nama_Penuh','text|email','text|nohp');
+		foreach($senaraiInput as $key):
+		list($type,$name) = explode('|',$key); ?>
 		<label for="inputText" class="sr-only"><?php echo $name ?></label>
-		<input type="text" name="biodata[<?php echo $name ?>]" id="inputText" class="form-control"
+		<input type="<?php echo $type ?>" name="biodata[<?php echo $name ?>]" id="inputText" class="form-control"
 		placeholder="<?php echo $name ?>" required autofocus><?php
 		endforeach; ?>
 		<label for="inputPassword" class="sr-only">Password</label>
