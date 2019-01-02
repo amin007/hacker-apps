@@ -88,7 +88,7 @@ class="btn btn-link"
 <div class="tab-content" id="myTabContent">
 	<div class="tab-pane fade show active" id="masuklah" role="tabpanel" aria-labelledby="home-tab">
 	<!--*********************************************************************************************************************************************** -->
-		<form class="form-signin" method="POST" action="masuklah">
+		<form method="POST" action="masuklah">
 		<h1 class="h3 mb-3 font-weight-normal">Daftar Masuk</h1>
 		<label for="inputText" class="sr-only">Email address / Handphone</label>
 		<input type="text" name="username" id="inputText" class="form-control" placeholder="Email address / Handphone" required autofocus>
@@ -104,7 +104,7 @@ class="btn btn-link"
 	</div><!-- / class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab" -->
 	<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 	<!--*********************************************************************************************************************************************** -->
-		<form class="form-signin" method="POST" action="index/baruSimpan">
+		<form method="POST" action="index/baruSimpan">
 		<h1 class="h3 mb-3 font-weight-normal">Borang Biodata</h1><?php
 		$senaraiInput = array('text|namaPengguna','password|kataLaluan','password|ulangKataLaluan',
 			'text|Nama_Penuh','text|email','text|nohp');
