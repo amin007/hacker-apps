@@ -103,25 +103,17 @@ class="btn btn-link"
 	</div><!-- / class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab" -->
 	<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 	<!--*********************************************************************************************************************************************** -->
-		<h1 class="h3 mb-3 font-weight-normal">Borang Biodata</h1>
-		<?php 
+		<h1 class="h3 mb-3 font-weight-normal">Borang Biodata</h1><?php
 		$senaraiInput = array('text|namaPengguna','password|kataLaluan','password|ulangKataLaluan',
 			'text|Nama_Penuh','text|email','text|nohp');
-		foreach($senaraiInput as $key):
-		list($type,$name) = explode('|',$key); ?>
-		<label for="inputText" class="sr-only"><?php echo $name ?></label>
-		<input type="<?php echo $type ?>" name="biodata[<?php echo $name ?>]" id="inputText" class="form-control"
-		placeholder="<?php echo $name ?>" required autofocus><?php
-		endforeach; ?>
-		<label for="inputPassword" class="sr-only">Password</label>
-		<input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
-		<div class="checkbox mb-3"><label><input type="checkbox" value="remember-me">
-			Ingat Daku Dalam Doamu
-		</label></div>
-		<input type="submit" value="Simpan" class="btn btn-lg btn-dark btn-block">
+		foreach($senaraiInput as $key): list($type,$name) = explode('|',$key); echo "\n\t\t";
+		?><input type="<?php echo $type ?>" name="biodata[<?php echo $name ?>]" class="form-control"<?php
+		?> placeholder="<?php echo $name ?>"><?php
+		endforeach; echo "\n\t\t";
+		?><input type="submit" value="Simpan" class="btn btn-lg btn-dark btn-block">
 		<p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
 	<!--*********************************************************************************************************************************************** -->
-	</div><!-- / class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+	</div><!-- / class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab" -->
 </div>
 <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 </form>
