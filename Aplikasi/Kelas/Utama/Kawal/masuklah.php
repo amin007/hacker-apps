@@ -90,12 +90,12 @@ class Masuklah extends \Aplikasi\Kitab\Kawal
 				$posmen[$myTable][$kekunci] = bersih($papar);
 			}//*/
 		endif; endforeach;
-
+		$posmen = $this->cincangSampaiLumat($senaraiJadual[0],$posmen);
 		/*$debugData = array('pilih','senaraiJadual','medanID','dataID','posmen');
 		echo '<pre>'; foreach($debugData as $semak): if(isset($$semak)):
 			echo '<br>$' . $semak . ' : '; print_r($$semak);
 		endif; endforeach; echo '</pre>';//*/
-		$posmen = $this->cincangSampaiLumat($senaraiJadual[0],$posmen);
+
 		return $posmen;
 	}
 #-------------------------------------------------------------------------------------------
