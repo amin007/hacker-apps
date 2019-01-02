@@ -234,8 +234,8 @@ class Tanya
 	{
 		$sql = $this->sql->bentukSqlSelect($myTable, $medan, $carian, $susun);
 
-		echo '<pre>DB_NAME:' . DB_NAME . '</pre><br>';
-		echo '<pre>sql:' . htmlentities($sql) . '</pre><br>';
+		echo '<pre>DB_NAME:' . DB_NAME . '';
+		echo '<br>sql:' . htmlentities($sql) . '</pre><br>';
 	}
 	#---------------------------------------------------------------------------------------------
 	public function paparSql($myTable, $medan, $carian, $susun)
