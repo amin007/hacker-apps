@@ -110,8 +110,7 @@ class="btn btn-link"
 		$senaraiInput = array('text|namaPengguna','password|kataLaluan','password|ulangKataLaluan',
 			'text|Nama_Penuh','text|email','text|nohp');
 		foreach($senaraiInput as $key): list($type,$name) = explode('|',$key); echo "\n\t\t";
-		?><input type="<?php echo $type ?>" name="nama_pengguna[<?php echo $name ?>]" class="form-control"<?php
-		?> placeholder="<?php echo $name ?>"><?php
+		?><input type="<?php echo $type ?>" name="nama_pengguna[<?php echo $name ?>]" class="form-control" placeholder="<?php echo $name ?>"><?php
 		endforeach; echo "\n\t\t";
 		?><input type="submit" value="Simpan" class="btn btn-lg btn-dark btn-block">
 		<p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
