@@ -72,7 +72,8 @@ body{
 	<div class="checkbox mb-3">
 		<label><input type="checkbox" value="remember-me"> Remember me </label>
 	</div>
-	<input type="submit" value="Sign In" class="btn btn-lg btn-primary btn-block">
+	<input type="submit" value="Masuklah" class="btn btn-lg btn-primary btn-block">
+	<a href="<?php echo URL ?>index/daftar" class="btn btn-lg btn-success btn-block">Daftar</a>
 	<p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
 </form>
 
