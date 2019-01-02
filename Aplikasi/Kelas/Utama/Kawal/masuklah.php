@@ -105,6 +105,11 @@ class Masuklah extends \Aplikasi\Kitab\Kawal
 		$options = array("cost"=>10);
 		$hashPassword = password_hash($passwordAsal,PASSWORD_BCRYPT,$options);
 		$posmen[$myTable]['kataRahsia'] = $hashPassword;
+		#---------------------------------------------------------------------
+		$passwordAsal2 = $posmen[$myTable]['kataLaluan'];
+		$password2 = \Aplikasi\Kitab\RahsiaHash::rahsia('md5', $passwordAsal2);
+		$posmen[$myTable]['kataLaluan'] = $password2;
+		#---------------------------------------------------------------------
 		unset($posmen[$myTable]['ulangKataLaluan']);
 
 		return $posmen;
