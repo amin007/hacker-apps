@@ -59,6 +59,57 @@ class Masuklah extends \Aplikasi\Kitab\Kawal
 	}
 #===========================================================================================
 #-------------------------------------------------------------------------------------------
+	public function baruSimpan()
+	{
+		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
+		$senaraiJadual = array('nama_pengguna');
+		# ubahsuai $posmen
+		$posmen = $this->ubahsuaiPostBaru($senaraiJadual);
+		//$this->semakPembolehubah($_POST,'_POST');
+		//$this->semakPembolehubah($posmen,'posmen');
+
+		# mula ulang $senaraiJadual
+		foreach ($senaraiJadual as $kunci => $jadual)
+		{# mula ulang table
+			$this->tanya->tambahSql($jadual, $posmen[$jadual]);
+			//$this->tanya->tambahData($jadual, $posmen[$jadual]);
+		}# tamat ulang table
+
+		# pergi papar kandungan
+		echo 'location:' . URL . '';
+		//header('location:' . URL . '');//*/
+	}
+#-------------------------------------------------------------------------------------------
+	function ubahsuaiPostBaru($senaraiJadual)
+	{
+		$posmen = array();
+		foreach ($_POST as $myTable => $value):
+		if ( in_array($myTable,$senaraiJadual) ):
+			foreach ($value as $kekunci => $papar)
+			{
+				$posmen[$myTable][$kekunci] = bersih($papar);
+			}//*/
+		endif; endforeach;
+
+		/*$debugData = array('pilih','senaraiJadual','medanID','dataID','posmen');
+		echo '<pre>'; foreach($debugData as $semak): if(isset($$semak)):
+			echo '<br>$' . $semak . ' : '; print_r($$semak);
+		endif; endforeach; echo '</pre>';//*/
+		$posmen = $this->cincangSampaiLumat($senaraiJadual[0],$posmen);
+		return $posmen;
+	}
+#-------------------------------------------------------------------------------------------
+	function cincangSampaiLumat($myTable,$posmen)
+	{
+		$passwordAsal = $posmen[$myTable]['ulangKataLaluan'];
+		$options = array("cost"=>10);
+		$hashPassword = password_hash($passwordAsal,PASSWORD_BCRYPT,$options);
+		$posmen[$myTable]['kataRahsia'] = $hashPassword;
+		unset($posmen[$myTable]['ulangKataLaluan']);
+
+		return $posmen;
+	}
+#-------------------------------------------------------------------------------------------
 	function semakID()
 	{# untuk paparkan jadual sahaja
 		echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
