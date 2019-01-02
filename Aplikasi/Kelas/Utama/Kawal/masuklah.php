@@ -143,12 +143,15 @@ class Masuklah extends \Aplikasi\Kitab\Kawal
 		//$this->kunciPintu($kira, $cariNama); # pilih pintu masuk
 	}
 #-------------------------------------------------------------------------------------------
-	function paparData()
+	function paparData($password,$cariNama)
 	{
-		//$pisau = \Aplikasi\Kitab\RahsiaHash::sahkan($data, $cincang);
+		echo '<hr>Nama class :' . __METHOD__ . '<hr>';
 		$this->semakPembolehubah($_POST,'1.POST');
 		$this->semakPembolehubah($password,'2.password');
 		$this->semakPembolehubah($cariNama,'3.cariNama');
+		$cincang = $cariNama[0]['kataRahsia'];
+		$pisau = \Aplikasi\Kitab\RahsiaHash::sahkan($password, $cincang);
+		$this->semakPembolehubah($cariNama,'4.pisau');
 		echo '<hr>$data->' . sizeof($cariNama) . '<hr>';//*/
 	}
 #-------------------------------------------------------------------------------------------
