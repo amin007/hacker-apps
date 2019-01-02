@@ -105,7 +105,7 @@ class="btn btn-link"
 	</div><!-- / class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab" -->
 	<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 	<!--*********************************************************************************************************************************************** -->
-		<form method="POST" action="<?php echo URL ?>index/baruSimpan">
+		<form method="POST" action="<?php echo URL ?>masuklah/baruSimpan">
 		<h1 class="h3 mb-3 font-weight-normal">Borang Biodata</h1><?php
 		$senaraiInput = array('text|namaPengguna','password|kataLaluan','password|ulangKataLaluan',
 			'text|Nama_Penuh','text|email','text|nohp');
