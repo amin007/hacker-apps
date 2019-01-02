@@ -76,6 +76,7 @@ class="btn btn-link"
 </style>
 </head>
 <body class="text-center">
+<div class="form-signin">
 <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 <ul class="nav nav-tabs" id="myTab" role="tablist">
 <li class="nav-item">
@@ -119,7 +120,7 @@ class="btn btn-link"
 	</div><!-- / class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab" -->
 </div>
 <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-
+</div><!-- / class="form-signin" -->
 <!--  letak skrip js di bawah ini
 ======================================================================================================= -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
