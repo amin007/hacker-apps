@@ -150,7 +150,10 @@ class Masuklah extends \Aplikasi\Kitab\Kawal
 		$this->semakPembolehubah($password,'2.password');
 		$this->semakPembolehubah($cariNama,'3.cariNama');
 		$cincang = $cariNama[0]['kataRahsia'];
-		//$pisau = \Aplikasi\Kitab\RahsiaHash::sahkan($passwordAsal, $cincang);
+		echo "<br>\$passwordAsal = $passwordAsal";
+		echo "<br>\$cincang = $cincang";
+		$pisau = \Aplikasi\Kitab\RahsiaHash::sahkan($passwordAsal, $cincang);
+		echo "<br>\$pisau = $pisau";
 		//$this->semakPembolehubah($cariNama,'4.pisau');
 		//echo '<hr>$data->' . sizeof($cariNama) . '<hr>';//*/
 	}
