@@ -76,7 +76,6 @@ class="btn btn-link"
 </style>
 </head>
 <body class="text-center">
-<form class="form-signin" method="POST" action="masuklah">
 <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 <ul class="nav nav-tabs" id="myTab" role="tablist">
 <li class="nav-item">
@@ -89,6 +88,7 @@ class="btn btn-link"
 <div class="tab-content" id="myTabContent">
 	<div class="tab-pane fade show active" id="masuklah" role="tabpanel" aria-labelledby="home-tab">
 	<!--*********************************************************************************************************************************************** -->
+		<form class="form-signin" method="POST" action="masuklah">
 		<h1 class="h3 mb-3 font-weight-normal">Daftar Masuk</h1>
 		<label for="inputText" class="sr-only">Email address / Handphone</label>
 		<input type="text" name="username" id="inputText" class="form-control" placeholder="Email address / Handphone" required autofocus>
@@ -99,10 +99,12 @@ class="btn btn-link"
 		</label></div>
 		<input type="submit" value="Masuklah" class="btn btn-lg btn-primary btn-block">
 		<p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+		</form>
 	<!--*********************************************************************************************************************************************** -->
 	</div><!-- / class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab" -->
 	<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 	<!--*********************************************************************************************************************************************** -->
+		<form class="form-signin" method="POST" action="index/baruSimpan">
 		<h1 class="h3 mb-3 font-weight-normal">Borang Biodata</h1><?php
 		$senaraiInput = array('text|namaPengguna','password|kataLaluan','password|ulangKataLaluan',
 			'text|Nama_Penuh','text|email','text|nohp');
@@ -112,11 +114,12 @@ class="btn btn-link"
 		endforeach; echo "\n\t\t";
 		?><input type="submit" value="Simpan" class="btn btn-lg btn-dark btn-block">
 		<p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+		</form>
 	<!--*********************************************************************************************************************************************** -->
 	</div><!-- / class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab" -->
 </div>
 <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-</form>
+
 <!--  letak skrip js di bawah ini
 ======================================================================================================= -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
