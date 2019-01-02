@@ -80,10 +80,10 @@ class="btn btn-link"
 <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 <ul class="nav nav-tabs" id="myTab" role="tablist">
 <li class="nav-item">
-	<a class="nav-link active" href="#masuklah" data-toggle="tab" role="tab">Masuklah</a>
+	<a class="nav-link active" href="#masuklah" data-toggle="tab">Masuklah</a>
 </li>
 <li class="nav-item">
-	<a class="nav-link" href="#profile" data-toggle="tab" role="tab">Profile</a>
+	<a class="nav-link" href="#profile" data-toggle="tab">Profile</a>
 </li>
 </ul>
 <div class="tab-content" id="myTabContent">
