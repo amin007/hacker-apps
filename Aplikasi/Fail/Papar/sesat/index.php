@@ -1,3 +1,5 @@
+<?php include 'A413/diatas.php'; ?>
+
 <div class="container">
 <div class="hero-unit">
 <h1>Sesat daa</h1>
@@ -12,3 +14,4 @@ if( isset($url) )
 </div><!-- / class="hero-unit" -->
 </div><!-- / class="container" -->
 <?php include 'contoh_koding.php'; ?>
+<?php //include 'A413/dibawah.php'; ?>
