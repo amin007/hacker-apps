@@ -7,6 +7,8 @@ $url = dpt_url_xfilter();
 if( isset($url) )
 {
 	echo '$url=>'; print_r($url);
-}	?></pre>
+}
+?></pre>
 </div><!-- / class="hero-unit" -->
 </div><!-- / class="container" -->
+<?php include 'contoh_koding.php'; ?>
