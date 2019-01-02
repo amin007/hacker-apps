@@ -69,9 +69,9 @@ body{
 	<input type="text" name="username" id="inputText" class="form-control" placeholder="Email address / Handphone" required autofocus>
 	<label for="inputPassword" class="sr-only">Password</label>
 	<input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
-	<div class="checkbox mb-3">
-		<label><input type="checkbox" value="remember-me"> Remember me </label>
-	</div>
+	<div class="checkbox mb-3"><label><input type="checkbox" value="remember-me">
+		Ingat Daku Dalam Doamu
+	</label></div>
 	<input type="submit" value="Masuklah" class="btn btn-lg btn-primary btn-block">
 	<a href="<?php echo URL ?>index/daftar" class="btn btn-lg btn-success btn-block">Daftar</a>
 	<p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
