@@ -16,8 +16,8 @@ class Masuklah extends \Aplikasi\Kitab\Kawal
 	public function index()
 	{
 		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
-		$this->semakID();
-		//$this->semakSiapa();
+		//$this->semakID();
+		$this->semakSiapa();
 
 		# Pergi papar kandungan
 		/*$this->_folder = 'cari';
@@ -58,6 +58,62 @@ class Masuklah extends \Aplikasi\Kitab\Kawal
 		//exit;
 	}
 #===========================================================================================
+#-------------------------------------------------------------------------------------------
+	public function baruSimpan()
+	{
+		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
+		$senaraiJadual = array('nama_pengguna');
+		# ubahsuai $posmen
+		$posmen = $this->ubahsuaiPostBaru($senaraiJadual);
+		//$this->semakPembolehubah($_POST,'_POST');
+		//$this->semakPembolehubah($posmen,'posmen');
+
+		# mula ulang $senaraiJadual
+		foreach ($senaraiJadual as $kunci => $jadual)
+		{# mula ulang table
+			//$this->tanya->tambahSql($jadual, $posmen[$jadual]);
+			$this->tanya->tambahData($jadual, $posmen[$jadual]);
+		}# tamat ulang table
+
+		# pergi papar kandungan
+		//echo 'location:' . URL . '';
+		header('location:' . URL . '');//*/
+	}
+#-------------------------------------------------------------------------------------------
+	function ubahsuaiPostBaru($senaraiJadual)
+	{
+		$posmen = array();
+		foreach ($_POST as $myTable => $value):
+		if ( in_array($myTable,$senaraiJadual) ):
+			foreach ($value as $kekunci => $papar)
+			{
+				$posmen[$myTable][$kekunci] = bersih($papar);
+			}//*/
+		endif; endforeach;
+		$posmen = $this->cincangSampaiLumat($senaraiJadual[0],$posmen);
+		/*$debugData = array('pilih','senaraiJadual','medanID','dataID','posmen');
+		echo '<pre>'; foreach($debugData as $semak): if(isset($$semak)):
+			echo '<br>$' . $semak . ' : '; print_r($$semak);
+		endif; endforeach; echo '</pre>';//*/
+
+		return $posmen;
+	}
+#-------------------------------------------------------------------------------------------
+	function cincangSampaiLumat($myTable,$posmen)
+	{
+		$passwordAsal = $posmen[$myTable]['ulangKataLaluan'];
+		$options = array("cost"=>10);
+		$hashPassword = password_hash($passwordAsal,PASSWORD_BCRYPT,$options);
+		$posmen[$myTable]['kataRahsia'] = $hashPassword;
+		#---------------------------------------------------------------------
+		$passwordAsal2 = $posmen[$myTable]['kataLaluan'];
+		$password2 = \Aplikasi\Kitab\RahsiaHash::rahsia('md5', $passwordAsal2);
+		$posmen[$myTable]['kataLaluan'] = $password2;
+		#---------------------------------------------------------------------
+		unset($posmen[$myTable]['ulangKataLaluan']);
+
+		return $posmen;
+	}
 #-------------------------------------------------------------------------------------------
 	function semakID()
 	{# untuk paparkan jadual sahaja
@@ -102,17 +158,29 @@ class Masuklah extends \Aplikasi\Kitab\Kawal
 		$password = \Aplikasi\Kitab\RahsiaHash::rahsia('md5', $passwordAsal);
 		list($myTable, $medan, $carian) = $this->tanya->dapatPencam($email,$password);
 		# mula cari $cariID dalam $myJadual
-			$cariNama =
-				//$this->tanya->cariSemuaData($myTable, $medan, $carian, null);
-				$this->tanya->cariSql($myTable, $medan, $carian, null);
-				$kira = sizeof($cariNama);//*
+			$cariTanya = $this->tanya->cariSql($myTable, $medan, $carian, null);
+			$cariNama = $this->tanya->cariSemuaData($myTable, $medan, $carian, null);
+			$kira = sizeof($cariNama);//*
 		# semak pembolehubah
-		$this->semakPembolehubah($_POST,'POST');
-		$this->semakPembolehubah($password,'password');
-		$this->semakPembolehubah($cariNama,'cariNama');
-		echo '<hr>$data->' . sizeof($cariNama) . '<hr>';//*/
-
+		$this->paparData($passwordAsal,$password,$cariNama);
 		//$this->kunciPintu($kira, $cariNama); # pilih pintu masuk
+	}
+#-------------------------------------------------------------------------------------------
+	function paparData($passwordAsal,$password,$cariNama)
+	{
+		echo '<hr>Nama class :' . __METHOD__ . '<hr>';
+		$this->semakPembolehubah($_POST,'1.POST');
+		$this->semakPembolehubah($password,'2.password');
+		$this->semakPembolehubah($cariNama,'3.cariNama');
+		$cincang = $cariNama[0]['kataRahsia'];
+		$this->semakPembolehubah($passwordAsal,'4.passwordAsal');
+		$this->semakPembolehubah($cincang,'5.cincang');
+		$pisau = \Aplikasi\Kitab\RahsiaHash::sahkan($passwordAsal, $cincang);
+		$this->semakPembolehubah($pisau,'6.pisau');
+		//echo '<hr>$data->' . sizeof($cariNama) . '<hr>';//*/
+		#http://php.net/manual/en/faq.passwords.php
+		#https://stackoverflow.com/questions/30279321/how-to-use-password-hash
+		#https://www.wdb24.com/how-to-use-php-password_hash-registration-login-form/
 	}
 #-------------------------------------------------------------------------------------------
 #===========================================================================================

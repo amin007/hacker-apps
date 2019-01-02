@@ -25,10 +25,10 @@ class Masuklah_Tanya extends \Aplikasi\Kitab\Tanya
 				'atau'=>'WHERE', # WHERE / OR / AND
 				'medan' => $medan01, # cari dalam medan apa
 				'apa' => $email); # benda yang dicari
-			$carian[] = array('fix'=>'like', # cari x= atau %like%
+			/*$carian[] = array('fix'=>'like', # cari x= atau %like%
 				'atau'=>'AND', # WHERE / OR / AND
 				'medan' => $medan02, # cari dalam medan apa
-				'apa' => $password); # benda yang dicari
+				'apa' => $password); # benda yang dicari//*/
 
 		return array("`$myTable`", $medan, $carian);
 	}
