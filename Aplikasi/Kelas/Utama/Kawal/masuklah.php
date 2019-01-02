@@ -155,6 +155,9 @@ class Masuklah extends \Aplikasi\Kitab\Kawal
 		$pisau = \Aplikasi\Kitab\RahsiaHash::sahkan($passwordAsal, $cincang);
 		$this->semakPembolehubah($pisau,'6.pisau');
 		//echo '<hr>$data->' . sizeof($cariNama) . '<hr>';//*/
+		#http://php.net/manual/en/faq.passwords.php
+		#https://stackoverflow.com/questions/30279321/how-to-use-password-hash
+		#https://www.wdb24.com/how-to-use-php-password_hash-registration-login-form/
 	}
 #-------------------------------------------------------------------------------------------
 #===========================================================================================
