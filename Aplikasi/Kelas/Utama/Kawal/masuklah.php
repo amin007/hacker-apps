@@ -71,13 +71,13 @@ class Masuklah extends \Aplikasi\Kitab\Kawal
 		# mula ulang $senaraiJadual
 		foreach ($senaraiJadual as $kunci => $jadual)
 		{# mula ulang table
-			$this->tanya->tambahSql($jadual, $posmen[$jadual]);
-			//$this->tanya->tambahData($jadual, $posmen[$jadual]);
+			//$this->tanya->tambahSql($jadual, $posmen[$jadual]);
+			$this->tanya->tambahData($jadual, $posmen[$jadual]);
 		}# tamat ulang table
 
 		# pergi papar kandungan
-		echo 'location:' . URL . '';
-		//header('location:' . URL . '');//*/
+		//echo 'location:' . URL . '';
+		header('location:' . URL . '');//*/
 	}
 #-------------------------------------------------------------------------------------------
 	function ubahsuaiPostBaru($senaraiJadual)
