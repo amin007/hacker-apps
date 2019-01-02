@@ -52,9 +52,11 @@ class Index extends \Aplikasi\Kitab\Kawal
 #-------------------------------------------------------------------------------------------
 	public function daftar()
 	{
-		echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
-		//$this->semakPembolehubah($_POST,'POST');//*/
-		//$this->debugKandunganPaparan();//*/
+		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
+		# Pergi papar kandungan
+		$fail = array('index','login','daftar');
+		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
+		$this->paparKandungan($this->_folder, $fail[2], $noInclude=1);
 	}
 #-------------------------------------------------------------------------------------------
 #===========================================================================================
