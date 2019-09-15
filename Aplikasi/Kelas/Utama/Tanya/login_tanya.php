@@ -127,13 +127,13 @@ class Login_Tanya extends \Aplikasi\Kitab\Tanya
 		$medan = '`no`,`namaPengguna`,`Nama_Penuh`';
 		$carian = $susun = null;
 		# semak database
-		$carian[] = array('fix' => ':=', # cari := / :like:
+		$carian[] = array('fix' => ':like:', # cari := / :like:
 			'atau' => 'WHERE', # WHERE / OR / AND
 			'medan' => 'namaPengguna', # cari dalam medan apa
 			'apa' => ':namaPengguna'); # benda yang dicari//*/
 		# tambah carian khas
-		//$p[':namaPengguna'] = "%$cariApa%";# untuk :like:
-		$p[':namaPengguna'] = $cariApa;# untuk :=
+		$p[':namaPengguna'] = "%$cariApa%";# untuk :like:
+		//$p[':namaPengguna'] = $cariApa;# untuk :=
 		return array($myTable, $medan, $carian, $susun, $p); # pulangkan nilai
 	}
 #-----------------------------------------------------------------------------------------#
