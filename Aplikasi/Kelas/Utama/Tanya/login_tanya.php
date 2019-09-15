@@ -102,4 +102,22 @@ class Login_Tanya extends \Aplikasi\Kitab\Tanya
 	}
 #-----------------------------------------------------------------------------------------#
 #==========================================================================================
+#-----------------------------------------------------------------------------------------#
+	function setParam01($cariApa)
+	{
+		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
+		//list($idUser,$namaPendek) = $this->tanyaDataSesi();
+		$myTable = 'nama_pengguna';
+		$medan = '*';
+		$carian = $susun = null;
+		# semak database
+			$carian[] = array('fix' => 'x=', # cari x= / %like% / xlike
+				'atau' => 'WHERE', # WHERE / OR / AND
+				'medan' => 'namaPengguna', # cari dalam medan apa
+				'apa' => $cariApa); # benda yang dicari//*/
+
+		return array($myTable, $medan, $carian, $susun); # pulangkan nilai
+	}
+#-----------------------------------------------------------------------------------------#
+#==========================================================================================
 }
