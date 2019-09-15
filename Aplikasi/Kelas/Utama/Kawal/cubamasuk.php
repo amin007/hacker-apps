@@ -63,8 +63,8 @@ class Cubamasuk extends \Aplikasi\Kitab\Kawal
 		echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
 
 		list($myTable, $medan01, $medan02, $medan) = dpt_senarai('jadual_login');
-		$email = $_POST['username'];
-		$passwordAsal = $_POST['password'];
+		$email = isset($_POST['username']) ? $_POST['username'] : null;
+		$passwordAsal = isset($_POST['password']) ? $_POST['password'] : null;
 		$password = \Aplikasi\Kitab\RahsiaHash::rahsia('md5', $passwordAsal);
 		# semak database
 			$carian[] = array('fix'=>'or(x=)', # cari x= atau %like%
