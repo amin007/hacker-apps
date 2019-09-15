@@ -118,7 +118,7 @@ class Papar
 		}//*/
 	}
 #-----------------------------------------------------------------------------------------
-	function pilihTemplate($template = 0)
+	function pilihTemplate($template = 'A431')
 	{
 		switch ($template)
 		{
@@ -140,7 +140,7 @@ class Papar
 			case 1: $jenis = 'AdminLTE-2.3.0';
 			break;
 
-			default: $jenis = 'A0';
+			default: $jenis = 'A431'; //$jenis = 'A0';
 			break;
 		}
 		return $jenis;
