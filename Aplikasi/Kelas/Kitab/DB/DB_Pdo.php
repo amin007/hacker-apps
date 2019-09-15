@@ -45,11 +45,12 @@ class DB_Pdo extends \PDO
 	 */
 	public function selectAll($sql, $array = array(), $fetchMode = \PDO::FETCH_ASSOC)
 	{
-		//echo '<hr><pre>'; print_r($sql) . '</pre><hr>';
+		//echo '<hr><pre>'; print_r($sql); echo '</pre><hr>';
 		$sth = $this->prepare($sql);
 		foreach ($array as $key => $value) 
 		{
-			$sth->bindValue("$key", $value);
+			$sth->bindValue($key, $value);
+			//echo '$sth->bindValue("'.$key.'", '.$value.')';
 		}
 
 		$sth->execute();
