@@ -136,164 +136,6 @@ class DB_Pdo extends \PDO
 	}
 #------------------------------------------------------------------------------------------------------------------
 	/**
-	 * insert
-	 * @param string $table A name of table to insert into
-	 * @param string $data An associative array
-	 */
-	public function insert($table, $data)
-	{
-		ksort($data);
-
-		$fieldNames = implode('`, `', array_keys($data));
-		$fieldValues = ':' . implode(', :', array_keys($data));
-
-		//echo $sql = "INSERT INTO $table (`$fieldNames`) VALUES ($fieldValues)";
-		$sth = $this->prepare("INSERT INTO $table (`$fieldNames`) VALUES ($fieldValues)");
-
-		foreach ($data as $key => $value)
-			$sth->bindValue(":$key", $value);
-
-		$sth->execute();
-		$problem = $sth->errorInfo(); # semak jika ada error
-		if($problem[0]=='00000')# pulangkan pembolehubah
-			return $sth->fetchAll($fetchMode);
-		else
-			$this->bigError($sth,$problem);//*/
-	}
-#------------------------------------------------------------------------------------------------------------------
-	/**
-	 * insertAll
-	 * @param string $sql An SQL string
-	 * @param array $array Paramters to bind
-	 * @param constant $fetchMode A PDO Fetch mode
-	 * @return mixed
-	 */
-	public function insertAll($sql, $array = array(), $fetchMode = \PDO::FETCH_ASSOC)
-	{
-		//echo '<hr><pre>'; print_r($sql) . '</pre><hr>';
-		$sth = $this->prepare($sql);
-		/*foreach ($array as $key => $value)
-		{
-			//$sth->bindValue("$key", $value);
-			echo "<br>\$sth->bindValue(\"$key\", $value) ";
-		}//*/
-
-		$sth->execute();
-		$problem = $sth->errorInfo(); # semak jika ada error
-		if($problem[0]=='00000')# pulangkan pembolehubah
-			return $sth->fetchAll($fetchMode);
-		else
-			$this->bigError($sth,$problem);//*/
-	}
-#------------------------------------------------------------------------------------------------------------------
-	/**
-	 * insertAllNew
-	 * @param string $sql An SQL string
-	 * @param array $array Paramters to bind
-	 * @param constant $fetchMode A PDO Fetch mode
-	 * @return mixed
-	 */
-	public function insertAllNew($sql, $array = array(), $fetchMode = \PDO::FETCH_ASSOC)
-	{
-		//echo '<hr><pre>'; print_r($sql); echo '</pre><hr>';
-		//echo '<hr><pre>array::'; print_r($array); echo '</pre><hr>';
-		
-		$sth = $this->prepare($sql);
-		foreach ($array as $key => $value)
-		{
-			$sth->bindValue(":$key", (!empty($value) ? $value : NULL) );
-			//echo '<hr>$sth->bindValue(":' . $key . '", ' . $value . ')';
-		}	//echo '<hr>';
-
-		$sth->execute();
-		$problem = $sth->errorInfo(); # semak jika ada error
-		if($problem[0]=='00000')# pulangkan pembolehubah
-			return $sth->fetchAll($fetchMode);
-		else
-			$this->bigError($sth,$problem);//*/
-	}
-#------------------------------------------------------------------------------------------------------------------
-	/**
-	 * update
-	 * @param string $sql An SQL string
-	 * @param array $array Paramters to bind
-	 * @param constant $fetchMode A PDO Fetch mode
-	 * @return mixed
-	 */
-	public function update($sql, $array = array(), $fetchMode = \PDO::FETCH_ASSOC)
-	{
-		//echo '<hr><pre>'; print_r($sql) . '</pre><hr>';
-		$sth = $this->prepare($sql);
-		foreach ($array as $key => $value)
-		{
-			$sth->bindValue("$key", $value);
-			//echo '$sth->bindValue("'.$key.'", '.$value.')';
-		}
-
-		$sth->execute();
-		$problem = $sth->errorInfo(); # semak jika ada error
-		if($problem[0]=='00000')# pulangkan pembolehubah
-			return $sth->fetchAll($fetchMode);
-		else
-			$this->bigError($sth,$problem);//*/
-	}
-#------------------------------------------------------------------------------------------------------------------
-	/**
-	 * updateNew
-	 * @param string $sql An SQL string
-	 * @param array $array Paramters to bind
-	 * @param constant $fetchMode A PDO Fetch mode
-	 * @return mixed
-	 */
-	public function updateNew($sql, $array = array(), $fetchMode = \PDO::FETCH_ASSOC)
-	{
-		//echo '<hr><pre>'; print_r($sql); echo '</pre><hr>';
-		$sth = $this->prepare($sql);
-		foreach ($array as $key => $value)
-		{
-			$sth->bindValue(":$key", (!empty($value) ? $value : NULL) );
-			//echo '<hr>$sth->bindValue(":' . $key . '", ' . $value . ')';
-		}	//echo '<hr>';
-
-		$sth->execute();
-		$problem = $sth->errorInfo(); # semak jika ada error
-		if($problem[0]=='00000')# pulangkan pembolehubah
-			return $sth->fetchAll($fetchMode);
-		else
-			$this->bigError($sth,$problem);//*/
-	}
-#------------------------------------------------------------------------------------------------------------------
-	/**
-	 * updateOld
-	 * @param string $table A name of table to insert into
-	 * @param string $data An associative array
-	 * @param string $where the WHERE query part
-	 */
-	public function updateOld($table, $data, $where)
-	{
-		ksort($data);
-
-		$fieldDetails = NULL;
-		foreach($data as $key=> $value) 
-			$fieldDetails .= "`$key`=:$key,";
-		$fieldDetails = rtrim($fieldDetails, ',');
-
-		echo $update = "UPDATE $table SET $fieldDetails WHERE $where";
-
-		$sth = $this->prepare("UPDATE $table SET $fieldDetails WHERE $where");
-
-		foreach ($data as $key => $value)
-			$sth->bindValue(":$key", $value);
-
-		$sth->execute();
-		$problem = $sth->errorInfo(); # semak jika ada error
-		if($problem[0]=='00000')# pulangkan pembolehubah
-			return $sth->fetchAll($fetchMode);
-		else
-			$this->bigError($sth,$problem);//*/
-	}
-#------------------------------------------------------------------------------------------------------------------
-	/**
 	 * delete
 	 * 
 	 * @param string $table
@@ -449,8 +291,165 @@ class DB_Pdo extends \PDO
 		if($problem[0]=='00000')# pulangkan pembolehubah
 			return $sth->fetchAll($fetchMode);
 		else
-			$this->bigError($sth,$problem);//*/
+			$this->bigError($sth,$problem);//*
 	}
 #------------------------------------------------------------------------------------------------------------------
+	/**
+	 * insert
+	 * @param string $table A name of table to insert into
+	 * @param string $data An associative array
+	 *
+	public function insert($table, $data)
+	{
+		ksort($data);
 
+		$fieldNames = implode('`, `', array_keys($data));
+		$fieldValues = ':' . implode(', :', array_keys($data));
+
+		//echo $sql = "INSERT INTO $table (`$fieldNames`) VALUES ($fieldValues)";
+		$sth = $this->prepare("INSERT INTO $table (`$fieldNames`) VALUES ($fieldValues)");
+
+		foreach ($data as $key => $value)
+			$sth->bindValue(":$key", $value);
+
+		$sth->execute();
+		$problem = $sth->errorInfo(); # semak jika ada error
+		if($problem[0]=='00000')# pulangkan pembolehubah
+			return $sth->fetchAll($fetchMode);
+		else
+			$this->bigError($sth,$problem);//*
+	}
+#------------------------------------------------------------------------------------------------------------------
+	/**
+	 * insertAll
+	 * @param string $sql An SQL string
+	 * @param array $array Paramters to bind
+	 * @param constant $fetchMode A PDO Fetch mode
+	 * @return mixed
+	 *
+	public function insertAll($sql, $array = array(), $fetchMode = \PDO::FETCH_ASSOC)
+	{
+		//echo '<hr><pre>'; print_r($sql) . '</pre><hr>';
+		$sth = $this->prepare($sql);
+		foreach ($array as $key => $value)
+		{
+			//$sth->bindValue("$key", $value);
+			echo "<br>\$sth->bindValue(\"$key\", $value) ";
+		}
+
+		$sth->execute();
+		$problem = $sth->errorInfo(); # semak jika ada error
+		if($problem[0]=='00000')# pulangkan pembolehubah
+			return $sth->fetchAll($fetchMode);
+		else
+			$this->bigError($sth,$problem);//*
+	}
+#------------------------------------------------------------------------------------------------------------------
+	/**
+	 * insertAllNew
+	 * @param string $sql An SQL string
+	 * @param array $array Paramters to bind
+	 * @param constant $fetchMode A PDO Fetch mode
+	 * @return mixed
+	 *
+	public function insertAllNew($sql, $array = array(), $fetchMode = \PDO::FETCH_ASSOC)
+	{
+		//echo '<hr><pre>'; print_r($sql); echo '</pre><hr>';
+		//echo '<hr><pre>array::'; print_r($array); echo '</pre><hr>';
+
+		$sth = $this->prepare($sql);
+		foreach ($array as $key => $value)
+		{
+			$sth->bindValue(":$key", (!empty($value) ? $value : NULL) );
+			//echo '<hr>$sth->bindValue(":' . $key . '", ' . $value . ')';
+		}	//echo '<hr>';
+
+		$sth->execute();
+		$problem = $sth->errorInfo(); # semak jika ada error
+		if($problem[0]=='00000')# pulangkan pembolehubah
+			return $sth->fetchAll($fetchMode);
+		else
+			$this->bigError($sth,$problem);//*
+	}
+#------------------------------------------------------------------------------------------------------------------
+	/**
+	 * update
+	 * @param string $sql An SQL string
+	 * @param array $array Paramters to bind
+	 * @param constant $fetchMode A PDO Fetch mode
+	 * @return mixed
+	 *
+	public function update($sql, $array = array(), $fetchMode = \PDO::FETCH_ASSOC)
+	{
+		//echo '<hr><pre>'; print_r($sql) . '</pre><hr>';
+		$sth = $this->prepare($sql);
+		foreach ($array as $key => $value)
+		{
+			$sth->bindValue("$key", $value);
+			//echo '$sth->bindValue("'.$key.'", '.$value.')';
+		}
+
+		$sth->execute();
+		$problem = $sth->errorInfo(); # semak jika ada error
+		if($problem[0]=='00000')# pulangkan pembolehubah
+			return $sth->fetchAll($fetchMode);
+		else
+			$this->bigError($sth,$problem);//*
+	}
+#------------------------------------------------------------------------------------------------------------------
+	/**
+	 * updateNew
+	 * @param string $sql An SQL string
+	 * @param array $array Paramters to bind
+	 * @param constant $fetchMode A PDO Fetch mode
+	 * @return mixed
+	 *
+	public function updateNew($sql, $array = array(), $fetchMode = \PDO::FETCH_ASSOC)
+	{
+		//echo '<hr><pre>'; print_r($sql); echo '</pre><hr>';
+		$sth = $this->prepare($sql);
+		foreach ($array as $key => $value)
+		{
+			$sth->bindValue(":$key", (!empty($value) ? $value : NULL) );
+			//echo '<hr>$sth->bindValue(":' . $key . '", ' . $value . ')';
+		}	//echo '<hr>';
+
+		$sth->execute();
+		$problem = $sth->errorInfo(); # semak jika ada error
+		if($problem[0]=='00000')# pulangkan pembolehubah
+			return $sth->fetchAll($fetchMode);
+		else
+			$this->bigError($sth,$problem);//*
+	}
+#------------------------------------------------------------------------------------------------------------------
+	/**
+	 * updateOld
+	 * @param string $table A name of table to insert into
+	 * @param string $data An associative array
+	 * @param string $where the WHERE query part
+	 *
+	public function updateOld($table, $data, $where)
+	{
+		ksort($data);
+
+		$fieldDetails = NULL;
+		foreach($data as $key=> $value)
+			$fieldDetails .= "`$key`=:$key,";
+		$fieldDetails = rtrim($fieldDetails, ',');
+
+		echo $update = "UPDATE $table SET $fieldDetails WHERE $where";
+
+		$sth = $this->prepare("UPDATE $table SET $fieldDetails WHERE $where");
+
+		foreach ($data as $key => $value)
+			$sth->bindValue(":$key", $value);
+
+		$sth->execute();
+		$problem = $sth->errorInfo(); # semak jika ada error
+		if($problem[0]=='00000')# pulangkan pembolehubah
+			return $sth->fetchAll($fetchMode);
+		else
+			$this->bigError($sth,$problem);//*
+	}
+#------------------------------------------------------------------------------------------------------------------
 //*/
