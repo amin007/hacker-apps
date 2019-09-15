@@ -62,6 +62,31 @@ class DB_Pdo extends \PDO
 	}
 #------------------------------------------------------------------------------------------------------------------
 	/**
+	 * selectDebug
+	 * @param string $sql An SQL string
+	 * @param array $array Paramters to bind
+	 * @param constant $fetchMode A PDO Fetch mode
+	 * @return mixed
+	 */
+	public function selectDebug($sql, $array = array(), $fetchMode = \PDO::FETCH_ASSOC)
+	{
+		echo '<hr><pre>'; print_r($sql);
+		$sth = $this->prepare($sql);
+		foreach ($array as $key => $value)
+		{
+			echo '<br>$sth->bindValue('.$key.', '.$value.')';
+			$sth->bindValue($key, $value);
+		}echo '</pre><hr>';
+
+		$sth->execute();
+		$problem = $sth->errorInfo(); # semak jika ada error
+		if($problem[0]=='00000')# pulangkan pembolehubah
+			return $sth->fetchAll($fetchMode);
+		else
+			$this->bigError($sth,$problem);//*/
+	}
+#------------------------------------------------------------------------------------------------------------------
+	/**
 	 * selectAll
 	 * @param string $sql An SQL string
 	 * @param array $array Paramters to bind
@@ -72,7 +97,7 @@ class DB_Pdo extends \PDO
 	{
 		//echo '<hr><pre>'; print_r($sql);
 		$sth = $this->prepare($sql);
-		foreach ($array as $key => $value) 
+		foreach ($array as $key => $value)
 		{
 			//echo '<br>$sth->bindValue('.$key.', '.$value.')';
 			$sth->bindValue($key, $value);
@@ -97,7 +122,7 @@ class DB_Pdo extends \PDO
 	{
 		//echo '<hr><pre>'; print_r($sql) . '</pre><hr>';
 		$sth = $this->prepare($sql);
-		foreach ($array as $key => $value) 
+		foreach ($array as $key => $value)
 		{
 			$sth->bindValue("$key", $value);
 		}
@@ -121,7 +146,7 @@ class DB_Pdo extends \PDO
 	{
 		//echo '<hr><pre>'; print_r($sql) . '</pre><hr>';
 		$sth = $this->prepare($sql);
-		foreach ($array as $key => $value) 
+		foreach ($array as $key => $value)
 		{
 			$sth->bindValue("$key", $value);
 		}
@@ -149,9 +174,8 @@ class DB_Pdo extends \PDO
 		//echo $sql = "INSERT INTO $table (`$fieldNames`) VALUES ($fieldValues)";
 		$sth = $this->prepare("INSERT INTO $table (`$fieldNames`) VALUES ($fieldValues)");
 
-		foreach ($data as $key => $value) {
+		foreach ($data as $key => $value)
 			$sth->bindValue(":$key", $value);
-		}
 
 		$sth->execute();
 		$problem = $sth->errorInfo(); # semak jika ada error
@@ -172,7 +196,7 @@ class DB_Pdo extends \PDO
 	{
 		//echo '<hr><pre>'; print_r($sql) . '</pre><hr>';
 		$sth = $this->prepare($sql);
-		/*foreach ($array as $key => $value) 
+		/*foreach ($array as $key => $value)
 		{
 			//$sth->bindValue("$key", $value);
 			echo "<br>\$sth->bindValue(\"$key\", $value) ";
@@ -199,7 +223,7 @@ class DB_Pdo extends \PDO
 		//echo '<hr><pre>array::'; print_r($array); echo '</pre><hr>';
 		
 		$sth = $this->prepare($sql);
-		foreach ($array as $key => $value) 
+		foreach ($array as $key => $value)
 		{
 			$sth->bindValue(":$key", (!empty($value) ? $value : NULL) );
 			//echo '<hr>$sth->bindValue(":' . $key . '", ' . $value . ')';
@@ -224,7 +248,7 @@ class DB_Pdo extends \PDO
 	{
 		//echo '<hr><pre>'; print_r($sql) . '</pre><hr>';
 		$sth = $this->prepare($sql);
-		foreach ($array as $key => $value) 
+		foreach ($array as $key => $value)
 		{
 			$sth->bindValue("$key", $value);
 			//echo '$sth->bindValue("'.$key.'", '.$value.')';
@@ -249,7 +273,7 @@ class DB_Pdo extends \PDO
 	{
 		//echo '<hr><pre>'; print_r($sql); echo '</pre><hr>';
 		$sth = $this->prepare($sql);
-		foreach ($array as $key => $value) 
+		foreach ($array as $key => $value)
 		{
 			$sth->bindValue(":$key", (!empty($value) ? $value : NULL) );
 			//echo '<hr>$sth->bindValue(":' . $key . '", ' . $value . ')';
