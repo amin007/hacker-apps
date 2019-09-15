@@ -152,13 +152,28 @@ class DB_Pdo extends \PDO
 		//$sth->bindParam($key, $value);
 	}
 #------------------------------------------------------------------------------------------------------------------
+	public static function debugType($key, $value, $type = null)
+	{
+		if( is_null($type) ):
+			switch(true):
+				case is_int($value): $type = PDO::PARAM_INT; break;
+				case is_bool($value): $type = PDO::PARAM_BOOL; break;
+				case is_null($value): $type = PDO::PARAM_NULL; break;
+				default : $type = \PDO::PARAM_STR;
+			endswitch;
+		endif;
+
+		return $type;//$type = \Aplikasi\Kitab\DB_Pdo::debugType($key,$value);
+	}
+#------------------------------------------------------------------------------------------------------------------
 	public static function debugBind($sth,$sql,$array)
 	{
 		echo '<hr><pre>'; print_r($sql);
 		foreach ($array as $key => $value)
 		{
-			echo '<br>$sth->bindValue('.$key.', '.$value.')';
-			$sth->bindValue($key, $value);
+			$type = \Aplikasi\Kitab\DB_Pdo::debugType($key,$value);
+			echo "<br>\$sth->bindValue($key, $value, $type)";
+			$sth->bindValue($key, $value, $type);
 		}echo '</pre><hr>';
 		# echo sahaja
 	}
