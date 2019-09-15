@@ -32,6 +32,7 @@ class DB_Pdo extends \PDO
 		$errorInfo = print_r($problem, true);
 		$error  = 'PDO::errorInfo():';
 		$error .= '<pre>' . $errorInfo . '</pre>';
+		$error .= '<a href="' . URL . '">Kembali</a>';
 		echo $error; # do what you wish with this param, write to log file etc...
 		exit;
 	}
