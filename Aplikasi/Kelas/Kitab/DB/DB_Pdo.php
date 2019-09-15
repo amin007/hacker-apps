@@ -152,6 +152,17 @@ class DB_Pdo extends \PDO
 		//$sth->bindParam($key, $value);
 	}
 #------------------------------------------------------------------------------------------------------------------
+	public static function debugBind($sth,$sql,$array)
+	{
+		echo '<hr><pre>'; print_r($sql);
+		foreach ($array as $key => $value)
+		{
+			echo '<br>$sth->bindValue('.$key.', '.$value.')';
+			$sth->bindValue($key, $value);
+		}echo '</pre><hr>';
+		# echo sahaja
+	}
+#------------------------------------------------------------------------------------------------------------------
 	/**
 	 * selectDebug()
 	 * @param string $sql An SQL string
@@ -161,14 +172,8 @@ class DB_Pdo extends \PDO
 	 */
 	public function selectDebug($sql, $array = array(), $fetchMode = \PDO::FETCH_ASSOC)
 	{
-		echo '<hr><pre>'; print_r($sql);
 		$sth = $this->prepare($sql);
-		foreach ($array as $key => $value)
-		{
-			echo '<br>$sth->bindValue('.$key.', '.$value.')';
-			$sth->bindValue($key, $value);
-		}echo '</pre><hr>';
-
+		\Aplikasi\Kitab\DB_Pdo::debugBind($sth,$sql,$array);
 		$sth->execute();
 		$problem = $sth->errorInfo(); # semak jika ada error
 		if($problem[0]=='00000')# pulangkan pembolehubah
