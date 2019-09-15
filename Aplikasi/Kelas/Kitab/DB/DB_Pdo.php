@@ -21,7 +21,7 @@ class DB_Pdo extends \PDO
 	}
 #------------------------------------------------------------------------------------------------------------------
 	/**
-	 * bigError
+	 * bigError()
 	 * @param papar $problem yang dialami
 	 * @exit
 	 */
@@ -37,7 +37,7 @@ class DB_Pdo extends \PDO
 	}
 #------------------------------------------------------------------------------------------------------------------
 	/**
-	 * bind
+	 * bind()
 	 * @param pembolehubah yang ada tanda :
 	 * @value nilai yang sebenar
 	 * @value nilai automatik
@@ -62,7 +62,7 @@ class DB_Pdo extends \PDO
 	}
 #------------------------------------------------------------------------------------------------------------------
 	/**
-	 * selectDebug
+	 * selectDebug()
 	 * @param string $sql An SQL string
 	 * @param array $array Paramters to bind
 	 * @param constant $fetchMode A PDO Fetch mode
@@ -136,8 +136,7 @@ class DB_Pdo extends \PDO
 	}
 #------------------------------------------------------------------------------------------------------------------
 	/**
-	 * delete
-	 * 
+	 * delete()
 	 * @param string $table
 	 * @param string $where
 	 * @param integer $limit
@@ -271,7 +270,7 @@ class DB_Pdo extends \PDO
 # koding lama, sebagai sejarah lama
 #------------------------------------------------------------------------------------------------------------------
 	/**
-	 * select
+	 * select()
 	 * @param string $sql An SQL string
 	 * @param array $array Paramters to bind
 	 * @param constant $fetchMode A PDO Fetch mode
@@ -295,7 +294,7 @@ class DB_Pdo extends \PDO
 	}
 #------------------------------------------------------------------------------------------------------------------
 	/**
-	 * insert
+	 * insert()
 	 * @param string $table A name of table to insert into
 	 * @param string $data An associative array
 	 *
@@ -321,7 +320,7 @@ class DB_Pdo extends \PDO
 	}
 #------------------------------------------------------------------------------------------------------------------
 	/**
-	 * insertAll
+	 * insertAll()
 	 * @param string $sql An SQL string
 	 * @param array $array Paramters to bind
 	 * @param constant $fetchMode A PDO Fetch mode
@@ -346,7 +345,7 @@ class DB_Pdo extends \PDO
 	}
 #------------------------------------------------------------------------------------------------------------------
 	/**
-	 * insertAllNew
+	 * insertAllNew()
 	 * @param string $sql An SQL string
 	 * @param array $array Paramters to bind
 	 * @param constant $fetchMode A PDO Fetch mode
@@ -373,7 +372,7 @@ class DB_Pdo extends \PDO
 	}
 #------------------------------------------------------------------------------------------------------------------
 	/**
-	 * update
+	 * update()
 	 * @param string $sql An SQL string
 	 * @param array $array Paramters to bind
 	 * @param constant $fetchMode A PDO Fetch mode
@@ -398,7 +397,7 @@ class DB_Pdo extends \PDO
 	}
 #------------------------------------------------------------------------------------------------------------------
 	/**
-	 * updateNew
+	 * updateNew()
 	 * @param string $sql An SQL string
 	 * @param array $array Paramters to bind
 	 * @param constant $fetchMode A PDO Fetch mode
@@ -423,7 +422,7 @@ class DB_Pdo extends \PDO
 	}
 #------------------------------------------------------------------------------------------------------------------
 	/**
-	 * updateOld
+	 * updateOld()
 	 * @param string $table A name of table to insert into
 	 * @param string $data An associative array
 	 * @param string $where the WHERE query part
