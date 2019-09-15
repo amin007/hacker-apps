@@ -77,7 +77,7 @@ class DB_Pdo extends \PDO
 			$sth->bindValue($key, $value);
 		}
 
-		/*$sth->execute();
+		$sth->execute();
 		$problem = $sth->errorInfo(); # semak jika ada error
 		if($problem[0]=='00000')# pulangkan pembolehubah
 			return $sth->fetchAll($fetchMode);
