@@ -338,7 +338,6 @@ class DB_Pdo extends \PDO
 }
 
 /*
-	/**
 	 * entah mana mamat ini jumpa, masih tidak faham
 	 * https://www.sitepoint.com/community/t/pdo-getcolumnmeta-bug/3430/3
 #------------------------------------------------------------------------------------------------------------------
