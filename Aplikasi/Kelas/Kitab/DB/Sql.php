@@ -26,7 +26,7 @@ class Sql
 		if($fix==':=')
 			$jika .= " $di`$medan` = $cariApa $akhir\r";
 		elseif($fix==':like:')
-			$jika .= " $di`$medan` like $cariApa $akhir\r";
+			$jika .= " $di`$medan` like CONCAT('%', $cariApa, '%') $akhir\r";
 
 		return $jika; //echo '<br>' . $jika;
 	}
@@ -327,5 +327,9 @@ class Sql
 		return $sql;
 	}
 #-------------------------------------------------------------------------------------------------
+#=================================================================================================
+/* untuk cegah suntikan sql
+https://stackoverflow.com/questions/11117134/implement-like-query-in-pdo/11117213
+//*/
 #=================================================================================================
 }
