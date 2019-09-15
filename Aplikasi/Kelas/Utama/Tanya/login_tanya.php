@@ -123,11 +123,11 @@ class Login_Tanya extends \Aplikasi\Kitab\Tanya
 	{
 		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
 		//list($idUser,$namaPendek) = $this->tanyaDataSesi();
-		$myTable = 'nama_pengguna';
-		$medan = 'no,namaPengguna,Nama_Penuh';
+		$myTable = '`nama_pengguna`';
+		$medan = '`no`,`namaPengguna`,`Nama_Penuh`';
 		$carian = $susun = null;
 		# semak database
-		$carian[] = array('fix' => '%like%', # cari x= / %like% / xlike
+		$carian[] = array('fix' => ':=', # cari := / :like:
 			'atau' => 'WHERE', # WHERE / OR / AND
 			'medan' => 'namaPengguna', # cari dalam medan apa
 			'apa' => ':namaPengguna'); # benda yang dicari//*/
