@@ -112,30 +112,6 @@ class DB_Pdo extends \PDO
 	}
 #------------------------------------------------------------------------------------------------------------------
 	/**
-	 * select
-	 * @param string $sql An SQL string
-	 * @param array $array Paramters to bind
-	 * @param constant $fetchMode A PDO Fetch mode
-	 * @return mixed
-	 */
-	public function select($sql, $array = array(), $fetchMode = \PDO::FETCH_ASSOC)
-	{
-		//echo '<hr><pre>'; print_r($sql) . '</pre><hr>';
-		$sth = $this->prepare($sql);
-		foreach ($array as $key => $value)
-		{
-			$sth->bindValue("$key", $value);
-		}
-
-		$sth->execute();
-		$problem = $sth->errorInfo(); # semak jika ada error
-		if($problem[0]=='00000')# pulangkan pembolehubah
-			return $sth->fetchAll($fetchMode);
-		else
-			$this->bigError($sth,$problem);//*/
-	}
-#------------------------------------------------------------------------------------------------------------------
-	/**
 	 * rowCount()
 	 * @param string $sql An SQL string
 	 * @param array $array Paramters to bind
@@ -450,4 +426,32 @@ class DB_Pdo extends \PDO
 		'binary' => PDO::PARAM_LOB
 		);
 #------------------------------------------------------------------------------------------------------------------
+###################################################################################################################
+# koding lama, sebagai sejarah lama
+#------------------------------------------------------------------------------------------------------------------
+	/**
+	 * select
+	 * @param string $sql An SQL string
+	 * @param array $array Paramters to bind
+	 * @param constant $fetchMode A PDO Fetch mode
+	 * @return mixed
+	 *
+	public function select($sql, $array = array(), $fetchMode = \PDO::FETCH_ASSOC)
+	{
+		//echo '<hr><pre>'; print_r($sql) . '</pre><hr>';
+		$sth = $this->prepare($sql);
+		foreach ($array as $key => $value)
+		{
+			$sth->bindValue("$key", $value);
+		}
+
+		$sth->execute();
+		$problem = $sth->errorInfo(); # semak jika ada error
+		if($problem[0]=='00000')# pulangkan pembolehubah
+			return $sth->fetchAll($fetchMode);
+		else
+			$this->bigError($sth,$problem);//*/
+	}
+#------------------------------------------------------------------------------------------------------------------
+
 //*/
