@@ -20,7 +20,7 @@ Contoh fungsi dalam class <?php echo $namaClass ?> extends \Aplikasi\Kitab\Kawal
 namespace Aplikasi\Kawal; //echo __NAMESPACE__;
 class <?php echo $namaClass ?> extends \Aplikasi\Kitab\Kawal
 {
-#===========================================================================================
+#=================================================================================================
 	function __construct()
 	{
 		parent::__construct();
@@ -30,7 +30,39 @@ class <?php echo $namaClass ?> extends \Aplikasi\Kitab\Kawal
 		//echo '&lt;hr>Nama class :' . __METHOD__ . '&lt;hr>';
 		//echo '&lt;hr>Nama function :' . __FUNCTION__ . '&lt;hr>';
 	}
-##------------------------------------------------------------------------------------------
+##------------------------------------------------------------------------------------------------
+	public function semakPembolehubah($senarai,$jadual)
+	{
+		echo '&lt;pre>$jadual = ' . $jadual . '|&lt;br>';
+		print_r($senarai); echo '&lt;/pre>';//*/
+		//$this->semakPembolehubah($ujian,'ujian');
+	}
+##------------------------------------------------------------------------------------------------
+	function logout()
+	{
+		//echo '&lt;pre>sebelum:'; print_r($_SESSION) . '&lt;/pre>';
+		\Aplikasi\Kitab\Sesi::destroy();
+		header('location:' . URL);
+		//exit;
+	}
+##------------------------------------------------------------------------------------------------
+	public function paparHeader()
+	{
+		$lokasi = 'pergi/mana';
+		//echo '&lt;br>location: ' . URL . $lokasi;
+		header('location:' . URL . $lokasi);//*/
+	}
+##------------------------------------------------------------------------------------------------
+	public function paparKandungan($folder, $fail, $noInclude)
+	{	# Pergi papar kandungan
+		$jenis = $this->papar->pilihTemplate($template=0);
+		$this->papar->bacaTemplate(
+		//$this->papar->paparTemplate(
+			$this->_folder . '/' . $fail, $jenis, $noInclude); # $noInclude=0
+			//'mobile/mobile',$jenis,0); # $noInclude=0
+		//*/
+	}
+##------------------------------------------------------------------------------------------------
 	public function index()
 	{
 		echo '&lt;hr> Nama class : ' . __METHOD__ . '&lt;hr>';
@@ -42,47 +74,16 @@ class <?php echo $namaClass ?> extends \Aplikasi\Kitab\Kawal
 		//echo '&lt;br>$fail = ' . $fail[0] . '&lt;hr>';
 		$this->paparKandungan($this->_folder, $fail[1], $noInclude=0);//*/
 	}
-##------------------------------------------------------------------------------------------
-	public function paparHeader()
-	{
-		$lokasi = 'pergi/mana';
-		//echo '&lt;br>location: ' . URL . $lokasi;
-		header('location:' . URL . $lokasi);//*/
-	}
-##------------------------------------------------------------------------------------------
-	public function paparKandungan($folder, $fail, $noInclude)
-	{	# Pergi papar kandungan
-		$jenis = $this->papar->pilihTemplate($template=0);
-		$this->papar->bacaTemplate(
-		//$this->papar->paparTemplate(
-			$this->_folder . '/' . $fail, $jenis, $noInclude); # $noInclude=0
-			//'mobile/mobile',$jenis,0); # $noInclude=0
-		//*/
-	}
-##------------------------------------------------------------------------------------------
-	public function semakPembolehubah($senarai,$jadual)
-	{
-		echo '&lt;pre>$jadual = ' . $jadual . '|&lt;br>';
-		print_r($senarai); echo '&lt;/pre>';//*/
-		//$this->semakPembolehubah($ujian,'ujian');
-	}
-##------------------------------------------------------------------------------------------
-	function logout()
-	{
-		//echo '&lt;pre>sebelum:'; print_r($_SESSION) . '&lt;/pre>';
-		\Aplikasi\Kitab\Sesi::destroy();
-		header('location:' . URL);
-		//exit;
-	}
-#===========================================================================================
-#-------------------------------------------------------------------------------------------
+##------------------------------------------------------------------------------------------------
+#=================================================================================================
+#-------------------------------------------------------------------------------------------------
 	public function <?php echo $namaFungsi ?>(<?php echo $pencam ?>)
 	{
 		//echo '&lt;hr>Nama class :' . __METHOD__ . '()&lt;hr>';
 		$this->semakPembolehubah($_POST,'POST');//*/
 		//$this->debugKandunganPaparan();//*/
 	}
-#-------------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------------------
 </code></pre>
 <hr>
 <pre><code>
@@ -92,20 +93,20 @@ Contoh fungsi dalam class <?php echo $namaClass ?>_Tanya extends \Aplikasi\Kitab
 namespace Aplikasi\Tanya; //echo __NAMESPACE__;
 class <?php echo $namaClass ?>_Tanya extends \Aplikasi\Kitab\Tanya
 {
-#===========================================================================================
-#------------------------------------------------------------------------------------------#
+#=================================================================================================
+#------------------------------------------------------------------------------------------------#
 	public function __construct()
 	{
 		parent::__construct();
 	}
-#------------------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------------------------#
 	public function semakPembolehubah($senarai,$jadual)
 	{
 		echo '&lt;pre>$jadual = ' . $jadual . '|&lt;br>';
 		print_r($senarai); echo '&lt;/pre>';//*/
 		//$this->semakPembolehubah($ujian,'ujian');
 	}
-#------------------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------------------------#
 </code></pre>
 <hr>
 </div><!-- / class="container" -->
