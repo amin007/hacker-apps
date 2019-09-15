@@ -171,9 +171,10 @@ class DB_Pdo extends \PDO
 		echo '<hr><pre>'; print_r($sql);
 		foreach ($array as $key => $value)
 		{
-			$type = \Aplikasi\Kitab\DB_Pdo::debugType($key,$value);
-			echo "<br>\$sth->bindValue($key, $value, $type)";
-			$sth->bindValue($key, $value, $type);
+			$val = (!empty($value) ? $value : NULL);
+			$type = \Aplikasi\Kitab\DB_Pdo::debugType($key,$val);
+			echo "<br>\$sth->bindValue($key, $val, $type)";
+			$sth->bindValue($key, $val, $type);
 		}echo '</pre><hr>';
 		# echo sahaja
 	}
