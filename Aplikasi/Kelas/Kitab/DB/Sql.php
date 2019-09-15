@@ -19,6 +19,18 @@ class Sql
 		return $jika; //echo '<br>' . $jika;
 	}
 #-------------------------------------------------------------------------------------------------
+	private function jikaTitikBertindih($fix,$di,$medan,$cariApa,$akhir)
+	{
+		$jika = null; //echo "\r($fix) +> $di $medan -> '$cariApa' |";
+		//array(':=',':like:',':like')
+		if($fix==':=')
+			$jika .= " $di`$medan` = $cariApa $akhir\r";
+		elseif($fix==':like:')
+			$jika .= " $di`$medan` like $cariApa $akhir\r";
+
+		return $jika; //echo '<br>' . $jika;
+	}
+#-------------------------------------------------------------------------------------------------
 	private function jikaSamaDgn($fix,$di,$medan,$cariApa,$akhir)
 	{
 		$jika = null; //echo "\r($fix) +> $di $medan -> '$cariApa' |";
@@ -139,6 +151,8 @@ class Sql
 		if($fix==null) $dimana .= null;
 		elseif($cariApa==null OR $fix=='xnull')
 			$dimana .= $this->jikaKosong($fix,$di,$medan,$cariApa,$akhir);
+		elseif( in_array($fix,array(':=',':like:')) )
+			$dimana .= $this->jikaTitikBertindih($fix,$di,$medan,$cariApa,$akhir);
 		elseif( in_array($fix,array('x=','x!=','x<=','x>=')) )
 			$dimana .= $this->jikaSamaDgn($fix,$di,$medan,$cariApa,$akhir);
 		elseif( in_array($fix,array('like','xlike','%like%','x%like%',
