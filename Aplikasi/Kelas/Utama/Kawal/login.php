@@ -183,4 +183,18 @@ class Login extends \Aplikasi\Kitab\Kawal
 	}
 #------------------------------------------------------------------------------------------
 #==========================================================================================
+#------------------------------------------------------------------------------------------
+	public function caridaa()
+	{
+		# Set pemboleubah utama
+		$this->papar->TajukBesar = 'Cari Pengguna Sistem';
+		list($a,$b,$c,$d) = $this->tanya->setDataUser();
+		$this->papar->senarai = $this->tanya->cariDaa();
+
+		# Pergi papar kandungan
+		$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
+		//$this->paparKandungan($this->_folder, 'caridaa');
+	}
+#------------------------------------------------------------------------------------------
+#==========================================================================================
 }
