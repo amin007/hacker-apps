@@ -37,56 +37,6 @@ class DB_Pdo extends \PDO
 	}
 #------------------------------------------------------------------------------------------------------------------
 	/**
-	 * bind()
-	 * @param pembolehubah yang ada tanda :
-	 * @value nilai yang sebenar
-	 * @value nilai automatik
-	 * @return $sth
-	 */
-	public function bind($param, $value, $type = null)
-	{
-		# https://www.geeksforgeeks.org/difference-between-bindparam-and-bindvalue-in-php/
-		$type = PDO::PARAM_STR;
-		/*if( is_null($type) ):
-			switch(true):
-				case is_int($value): $type = PDO::PARAM_INT; break;
-				case is_bool($value): $type = PDO::PARAM_BOOL; break;
-				case is_null($value): $type = PDO::PARAM_NULL; break;
-				default : $type = PDO::PARAM_STR;
-			endswitch;
-		endif;*/
-		# semak pembolehubah
-		echo '$sth->bindValue('.$key.', '.$value.', '.$type.')';
-		//$sth->bindValue($param, $value, $type);
-		//$sth->bindParam($key, $value);
-	}
-#------------------------------------------------------------------------------------------------------------------
-	/**
-	 * selectDebug()
-	 * @param string $sql An SQL string
-	 * @param array $array Paramters to bind
-	 * @param constant $fetchMode A PDO Fetch mode
-	 * @return mixed
-	 */
-	public function selectDebug($sql, $array = array(), $fetchMode = \PDO::FETCH_ASSOC)
-	{
-		echo '<hr><pre>'; print_r($sql);
-		$sth = $this->prepare($sql);
-		foreach ($array as $key => $value)
-		{
-			echo '<br>$sth->bindValue('.$key.', '.$value.')';
-			$sth->bindValue($key, $value);
-		}echo '</pre><hr>';
-
-		$sth->execute();
-		$problem = $sth->errorInfo(); # semak jika ada error
-		if($problem[0]=='00000')# pulangkan pembolehubah
-			return $sth->fetchAll($fetchMode);
-		else
-			$this->bigError($sth,$problem);//*/
-	}
-#------------------------------------------------------------------------------------------------------------------
-	/**
 	 * selectAll
 	 * @param string $sql An SQL string
 	 * @param array $array Paramters to bind
@@ -173,6 +123,58 @@ class DB_Pdo extends \PDO
 		{
 			trigger_error('Could not connect to MySQL database. ' . $pe->getMessage() , E_USER_ERROR);
 		}
+	}
+#------------------------------------------------------------------------------------------------------------------
+#==================================================================================================================
+#------------------------------------------------------------------------------------------------------------------
+	/**
+	 * bind()
+	 * @param pembolehubah yang ada tanda :
+	 * @value nilai yang sebenar
+	 * @value nilai automatik
+	 * @return $sth
+	 */
+	public function bind($param, $value, $type = null)
+	{
+		# https://www.geeksforgeeks.org/difference-between-bindparam-and-bindvalue-in-php/
+		$type = PDO::PARAM_STR;
+		/*if( is_null($type) ):
+			switch(true):
+				case is_int($value): $type = PDO::PARAM_INT; break;
+				case is_bool($value): $type = PDO::PARAM_BOOL; break;
+				case is_null($value): $type = PDO::PARAM_NULL; break;
+				default : $type = PDO::PARAM_STR;
+			endswitch;
+		endif;*/
+		# semak pembolehubah
+		echo '$sth->bindValue('.$key.', '.$value.', '.$type.')';
+		//$sth->bindValue($param, $value, $type);
+		//$sth->bindParam($key, $value);
+	}
+#------------------------------------------------------------------------------------------------------------------
+	/**
+	 * selectDebug()
+	 * @param string $sql An SQL string
+	 * @param array $array Paramters to bind
+	 * @param constant $fetchMode A PDO Fetch mode
+	 * @return mixed
+	 */
+	public function selectDebug($sql, $array = array(), $fetchMode = \PDO::FETCH_ASSOC)
+	{
+		echo '<hr><pre>'; print_r($sql);
+		$sth = $this->prepare($sql);
+		foreach ($array as $key => $value)
+		{
+			echo '<br>$sth->bindValue('.$key.', '.$value.')';
+			$sth->bindValue($key, $value);
+		}echo '</pre><hr>';
+
+		$sth->execute();
+		$problem = $sth->errorInfo(); # semak jika ada error
+		if($problem[0]=='00000')# pulangkan pembolehubah
+			return $sth->fetchAll($fetchMode);
+		else
+			$this->bigError($sth,$problem);//*/
 	}
 #------------------------------------------------------------------------------------------------------------------
 #==================================================================================================================
