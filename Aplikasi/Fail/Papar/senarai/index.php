@@ -1,5 +1,5 @@
 <?php
-$mencari = URL . 'senarai/carian';
+$mencari = URL . 'senarai/cari01';
 $butangHantar = 'cari produk';
 ?>
 <div class="container">
