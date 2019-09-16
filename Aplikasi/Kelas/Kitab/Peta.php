@@ -78,8 +78,7 @@ class Peta
 		{
 			if (!method_exists($kawal, $url[1])) {$this->parameter();}
 		}
-			$this->muatkanKawal($kawal, $panjang, $url);
-
+		$this->muatkanKawal($kawal, $panjang, $url);
     }
 #------------------------------------------------------------------------------------------------------------------
 	private function muatkanKawal($kawal, $panjang, $url)
