@@ -65,9 +65,9 @@ class Senarai extends \Aplikasi\Kitab\Kawal
 		//$this->semakPembolehubah($_POST,'POST');//*/
 		$cariApa = isset($_POST['cari']) ? $_POST['cari'] : null;
 		# cari dalam database
-		list($j, $m, $c, $s, $p) = $this->tanya->setParam01($cariApa);
-		$this->papar->senarai = $this->tanya->cariSemuaData
-		($j, $m, $c, $s, $p);
+		list($j, $m, $c, $s) = $this->tanya->setParam01($cariApa);
+		$this->papar->senarai['produk'] = $this->tanya->cariIlham
+		($j, $m, $c, $s);
 
 		# Pergi papar kandungan
 		//$this->semakPembolehubah($this->papar->senarai,'senarai');
