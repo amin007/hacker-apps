@@ -336,5 +336,17 @@ class Sql
 untuk cegah suntikan sql
 https://stackoverflow.com/questions/11117134/implement-like-query-in-pdo/11117213
 https://stackoverflow.com/questions/1720244/create-new-user-in-mysql-and-give-it-full-access-to-one-database
-//*/
+-- SELECT ? FROM ? WHERE ? LIKE '%APA%';
 
+-- SELECT ? FROM ? WHERE ? LIKE '%'%';
+
+-- SELECT ? FROM ? WHERE ? LIKE '%APA' AND 1 = SLEEP(2);-- %
+
+-- SELECT ?,?,? FROM ? WHERE ? LIKE '%APA' UNION (SELECT 1,2,3 FROM dual);-- %
+
+--SELECT ?,?,? FROM ? WHERE ? LIKE '%APA' UNION (SELECT table_name, table_schema, 3 FROM information_schema.tables
+);-- %
+-- SELECT ?,?,? FROM ? WHERE ? LIKE '%APA' UNION (SELECT column_name,2,3 FROM infomation.columns WHERE table_name = 'users');-- %
+
+-- SELECT ?,?,? FROM ? WHERE ? LIKE '%APA' UNION (SELECT uLogin, uHash, uType FROM users);-- %
+//*/
