@@ -59,20 +59,6 @@ class Senarai extends \Aplikasi\Kitab\Kawal
 ##------------------------------------------------------------------------------------------------
 #=================================================================================================
 #-------------------------------------------------------------------------------------------------
-	public function user()
-	{
-		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
-		# Set pembolehubah utama
-		$this->papar->Tajuk_Muka_Surat = 'Senarai User';
-		$this->papar->senarai = array();
-
-		# Pergi papar kandungan
-		$this->_folder = 'senarai';
-		$fail = array('1cari','index','b_ubah');
-		//echo '<br>$fail = ' . $fail[0] . '<hr>';
-		$this->paparKandungan($this->_folder, $fail[1], $noInclude=0);//*/
-	}
-#-------------------------------------------------------------------------------------------------
 	public function carian()
 	{
 		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
