@@ -197,7 +197,6 @@ class Login extends \Aplikasi\Kitab\Kawal
 		echo '<hr>Nama class :' . __METHOD__ . '<hr>';
 		$this->papar->TajukBesar = 'Cari Pengguna Sistem';
 		list($jadual, $medan, $carian, $susun) = $this->tanya->setParam01($cariApa);
-		//list($jadual, $medan, $carian, $susun, $p) = $this->tanya->setParam02($cariApa);
 		$this->papar->senarai = $this->tanya->//cariSql
 			cariIlham
 			($jadual, $medan, $carian, $susun);//*/
