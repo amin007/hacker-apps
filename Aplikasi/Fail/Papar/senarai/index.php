@@ -22,7 +22,7 @@ $butangHantar = 'cari produk';
 <br>
 <?php
 # untuk kod baru
-echo '<pre class="bg-secondary text-white">$senarai='; print_r($this->senarai); echo '</pre>';
+//echo '<pre class="bg-secondary text-white">$senarai='; print_r($this->senarai); echo '</pre>';
 
 echo "\n" . '<!-- h1> Ini Template Biasa </h1 -->';
 foreach ($this->senarai as $myTable => $row)
