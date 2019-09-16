@@ -230,6 +230,7 @@ class Tanya
 	public function cariKhasSql($sql)
 	{
 		$result = $this->db->selectAll($sql);
+		echo '<pre>$sql::' . htmlentities($sql) . '</pre><br>';
 		//echo json_encode($result);
 
 		return $result;
