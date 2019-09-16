@@ -28,11 +28,13 @@ class DB_Pdo extends \PDO
 	public function bigError($sth,$problem)
 	{
 		//$sth->debugDumpParams(); # papar sql balik
+		$u = dpt_url();//echo '<pre>'; print_r($u);echo '</pre>';
+		$p = URL . $u[0] . '/' . $u[1];
 		# true flag returns val rather than print;
 		$errorInfo = print_r($problem, true);
 		$error  = 'PDO::errorInfo():';
 		$error .= '<pre>' . $errorInfo . '</pre>';
-		$error .= '<a href="' . URL . '">Kembali</a>';
+		$error .= '<a href="' . $p . '">Kembali</a>';
 		echo $error; # do what you wish with this param, write to log file etc...
 		exit;
 	}
