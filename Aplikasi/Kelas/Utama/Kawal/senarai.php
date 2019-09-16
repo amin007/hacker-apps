@@ -47,14 +47,15 @@ class Senarai extends \Aplikasi\Kitab\Kawal
 ##------------------------------------------------------------------------------------------------
 	public function index()
 	{
-		echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
-		//$this->paparJadual(); # Set pembolehubah utama
+		//echo '<hr> Nama class : ' . __METHOD__ . '<hr>';
+		# Set pembolehubah utama
+		$this->papar->senarai['produk'] = array();
 
 		# Pergi papar kandungan
 		//$this->_folder = 'cari';
-		//$fail = array('1cari','index','b_ubah');
+		$fail = array('1cari','index','b_ubah');
 		//echo '<br>$fail = ' . $fail[0] . '<hr>';
-		//$this->paparKandungan($this->_folder, $fail[1], $noInclude=0);//*/
+		$this->paparKandungan($this->_folder, $fail[1], $noInclude=0);//*/
 	}
 ##------------------------------------------------------------------------------------------------
 #=================================================================================================
