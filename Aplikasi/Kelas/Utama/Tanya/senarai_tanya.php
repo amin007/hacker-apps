@@ -33,7 +33,7 @@ class Senarai_Tanya extends \Aplikasi\Kitab\Tanya
 		$sql = ''
 		. 'SELECT productName,productLine,productVendor ' . "\r"
 		. ' FROM nama_produk ' . "\r"
-		. ' WHERE `productName` like "%$cariApa%"' . "\r";
+		. ' WHERE `productName` like "%'.$cariApa.'%"' . "\r";
 
 		return $sql;
 	}
