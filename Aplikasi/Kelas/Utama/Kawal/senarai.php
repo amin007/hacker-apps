@@ -77,5 +77,19 @@ class Senarai extends \Aplikasi\Kitab\Kawal
 		$this->paparKandungan($this->_folder, $fail[1], $noInclude=0);//*/
 	}
 #-------------------------------------------------------------------------------------------------
+	public function cari01($cariApa = null)
+	{
+		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
+		# cari dalam database
+		$sql = $this->tanya->setSql00($cariApa);
+		$this->papar->senarai['produk'] = $this->tanya->cariKhasSql($sql);
+
+		# Pergi papar kandungan
+		$this->semakPembolehubah($this->papar->senarai,'senarai');
+		//$fail = array('1cari','index','b_ubah');
+		//echo '<br>$fail = ' . $fail[0] . '<hr>';
+		//$this->paparKandungan($this->_folder, $fail[1], $noInclude=0);//*/
+	}
+#-------------------------------------------------------------------------------------------------
 #=================================================================================================
 }
