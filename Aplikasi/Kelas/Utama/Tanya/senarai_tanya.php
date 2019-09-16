@@ -18,6 +18,26 @@ class Senarai_Tanya extends \Aplikasi\Kitab\Tanya
 ##----------------------------------------------------------------------------------------------##
 #=================================================================================================
 #------------------------------------------------------------------------------------------------#
+	function setSql00($cariApa)
+	{
+		$sql = ""
+		. "SELECT productName,productLine,productVendor \r"
+		. " FROM nama_produk \r"
+		. " WHERE `productName` like '%$cariApa%' ";
+
+		return $sql;
+	}
+#------------------------------------------------------------------------------------------------#
+	function setSql01($cariApa)
+	{
+		$sql = ''
+		. 'SELECT productName,productLine,productVendor ' . "\r"
+		. ' FROM nama_produk ' . "\r"
+		. ' WHERE `productName` like "%$cariApa%"' . "\r";
+
+		return $sql;
+	}
+#------------------------------------------------------------------------------------------------#
 	function setParam01($cariApa)
 	{
 		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
