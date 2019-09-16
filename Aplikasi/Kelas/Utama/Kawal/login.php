@@ -196,11 +196,11 @@ class Login extends \Aplikasi\Kitab\Kawal
 		# Set pemboleubah utama
 		echo '<hr>Nama class :' . __METHOD__ . '<hr>';
 		$this->papar->TajukBesar = 'Cari Pengguna Sistem';
-		//list($jadual, $medan, $carian, $susun) = $this->tanya->setParam01($cariApa);
-		list($jadual, $medan, $carian, $susun, $p) = $this->tanya->setParam02($cariApa);
+		list($jadual, $medan, $carian, $susun) = $this->tanya->setParam01($cariApa);
+		//list($jadual, $medan, $carian, $susun, $p) = $this->tanya->setParam02($cariApa);
 		$this->papar->senarai = $this->tanya->//cariSql
-			cariSemuaData
-			($jadual, $medan, $carian, $susun, $p);//*/
+			cariIlham
+			($jadual, $medan, $carian, $susun);//*/
 
 		# Pergi papar kandungan
 		$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
