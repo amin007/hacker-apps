@@ -206,5 +206,21 @@ class Login extends \Aplikasi\Kitab\Kawal
 		//$this->paparKandungan($this->_folder, 'caridaa');
 	}
 #-------------------------------------------------------------------------------------------------
+	public function cari02($cariApa = null)
+	{
+		# Set pemboleubah utama
+		echo '<hr>Nama class :' . __METHOD__ . '<hr>';
+		$this->papar->TajukBesar = 'Cari Pengguna Sistem';
+		$p[':namaPengguna'] = $cariApa;
+		list($jadual, $medan, $carian, $susun) = $this->tanya->setParam01($cariApa);
+		$this->papar->senarai = $this->tanya->//cariSql
+			cariIlham02
+			($jadual, $medan, $carian, $susun, $p);//*/
+
+		# Pergi papar kandungan
+		$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
+		//$this->paparKandungan($this->_folder, 'caridaa');
+	}
+#-------------------------------------------------------------------------------------------------
 #=================================================================================================
 }
