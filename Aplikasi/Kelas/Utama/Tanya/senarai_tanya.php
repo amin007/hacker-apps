@@ -22,17 +22,16 @@ class Senarai_Tanya extends \Aplikasi\Kitab\Tanya
 	{
 		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
 		//list($idUser,$namaPendek) = $this->tanyaDataSesi();
-		$j = 'nama_pengguna';#jadual
-		$m = 'no,namaPengguna,Nama_Penuh';#medan
-		$c = $s = null;#carian dan susun
+		$j = 'nama_produk';#j=jadual
+		$m = 'productName,productLine,productVendor';#m=medan
+		$c = $s = null;#c=carian dan s=susun
 		# semak database
 		$c[] = array('fix' => '%like%', # cari x= / %like% / xlike
 			'atau' => 'WHERE', # WHERE / OR / AND
-			'medan' => 'namaPengguna', # cari dalam medan apa
+			'medan' => 'productName', # cari dalam medan apa
 			'apa' => $cariApa); # benda yang dicari//*/
-		# data carian
-		$p[':namaPengguna'] = null;
-		return array($j, $m, $c, $s, $p); # pulangkan nilai
+
+		return array($j, $m, $c, $s); # pulangkan nilai
 	}
 #------------------------------------------------------------------------------------------------#
 #=================================================================================================
