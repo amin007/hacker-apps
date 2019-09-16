@@ -335,5 +335,6 @@ class Sql
 	**
 untuk cegah suntikan sql
 https://stackoverflow.com/questions/11117134/implement-like-query-in-pdo/11117213
+https://stackoverflow.com/questions/1720244/create-new-user-in-mysql-and-give-it-full-access-to-one-database
 //*/
 
