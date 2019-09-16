@@ -133,9 +133,9 @@ class Login_Tanya extends \Aplikasi\Kitab\Tanya
 			'medan' => 'namaPengguna', # cari dalam medan apa
 			'apa' => ':namaPengguna'); # benda yang dicari//*/
 		# tambah carian khas
-		$p[':namaPengguna'] = $cariApa;
+		//$p[':namaPengguna'] = $cariApa;
 
-		return array($myTable, $medan, $carian, $susun, $p); # pulangkan nilai
+		return array($myTable, $medan, $carian, $susun); # pulangkan nilai
 	}
 #------------------------------------------------------------------------------------------------#
 #=================================================================================================
