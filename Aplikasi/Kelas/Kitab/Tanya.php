@@ -206,8 +206,10 @@ class Tanya
 	#---------------------------------------------------------------------------------------------
 	public function cariIlham($myTable, $medan, $carian, $susun)
 	{
+		$param = array();
 		$sql = $this->sql->bentukSqlSelect($myTable, $medan, $carian, $susun);
-		$result = $this->db->selectAll($sql);
+		$result = $this->db->selectAll($sql, $param);
+		//$result = $this->db->selectDebug($sql, $param);
 		//echo '<pre>$sql::' . htmlentities($sql) . '</pre><br>';
 		//echo '<pre>$result::'; print_r($result); echo '</pre><br>';
 
