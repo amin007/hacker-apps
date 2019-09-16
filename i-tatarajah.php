@@ -81,7 +81,6 @@ else
 	define('BOOTSTRAPJS431', $bootstrapJS_431);
 	define('BOOTSTRAPCSS431', $bootstrapCSS_431);
 	define('FONTAWESOME563', $fontawesome_563);
-
 }
 //echo DB_HOST . "," . DB_USER . "," . DB_PASS . ",," . DB_NAME . "<br>";
 ############################################################################################
