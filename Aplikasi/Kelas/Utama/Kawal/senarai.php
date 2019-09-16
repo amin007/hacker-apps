@@ -81,7 +81,7 @@ class Senarai extends \Aplikasi\Kitab\Kawal
 	{
 		//echo '<hr>Nama class :' . __METHOD__ . '()<hr>';
 		# cari dalam database
-		$sql = $this->tanya->setSql00($cariApa);
+		$sql = $this->tanya->setSql01($cariApa);
 		$this->papar->senarai['produk'] = $this->tanya->cariKhasSql($sql);
 
 		# Pergi papar kandungan
