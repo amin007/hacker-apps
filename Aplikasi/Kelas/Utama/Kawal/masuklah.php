@@ -196,10 +196,13 @@ class Masuklah extends \Aplikasi\Kitab\Kawal
 	function nomborPutar()
 	{
 		# set pembolehubah
+		echo '<hr>Nama class :' . __METHOD__ . '<hr>';
+
 		# pergi papar kandungan
+		$this->_folder = 'index';
 		$fail = 'loginDieHard4';
 		$t = 4;
-		$this->paparKandungan02($this->_folder, $fail, $t);
+		$this->paparKandungan02($this->_folder, $fail, $t, $k=0);
 	}
 #-------------------------------------------------------------------------------------------
 #===========================================================================================
