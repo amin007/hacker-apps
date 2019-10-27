@@ -43,6 +43,16 @@ class Masuklah extends \Aplikasi\Kitab\Kawal
 		//*/
 	}
 ##------------------------------------------------------------------------------------------
+	public function paparKandungan02($folder, $fail, $template=0, $noInclude)
+	{	# Pergi papar kandungan
+		$jenis = $this->papar->pilihTemplate($template);
+		$this->papar->bacaTemplate(
+		//$this->papar->paparTemplate(
+			$this->_folder . '/' . $fail, $jenis, $noInclude); # $noInclude=0
+			//'mobile/mobile',$jenis,0); # $noInclude=0
+		//*/
+	}
+##------------------------------------------------------------------------------------------
 	public function semakPembolehubah($senarai,$jadual)
 	{
 		echo '<pre>$' . $jadual . '=>';
