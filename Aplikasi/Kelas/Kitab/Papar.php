@@ -122,13 +122,16 @@ class Papar
 	{
 		switch ($template)
 		{
-			case 6: $jenis = 'A4.1.1';
+			case 7: $jenis = 'A4.1.1';
 			break;
 
-			case 5: $jenis = 'miminium';
+			case 6: $jenis = 'miminium';
 			break;
 
-			case 4: $jenis = 'modern_admin_panel';
+			case 5: $jenis = 'modern_admin_panel';
+			break;
+
+			case 4: $jenis = 'Diehard4';
 			break;
 
 			case 3: $jenis = 'startbootstrap-sb-admin-2-1.0.8';
