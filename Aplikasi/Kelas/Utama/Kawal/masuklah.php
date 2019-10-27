@@ -183,5 +183,14 @@ class Masuklah extends \Aplikasi\Kitab\Kawal
 		#https://www.wdb24.com/how-to-use-php-password_hash-registration-login-form/
 	}
 #-------------------------------------------------------------------------------------------
+	function nomborPutar()
+	{
+		# set pembolehubah
+		# pergi papar kandungan
+		$fail = 'loginDieHard4';
+		$t = 4;
+		$this->paparKandungan02($this->_folder, $fail, $t);
+	}
+#-------------------------------------------------------------------------------------------
 #===========================================================================================
 }
