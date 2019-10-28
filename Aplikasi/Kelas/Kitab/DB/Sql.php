@@ -124,6 +124,7 @@ class Sql
 	private function jikaZ($fix,$di,$medan,$cariApa,$akhir)
 	{
 		$jika = null; //echo "\r($fix) +> $di $medan -> '$cariApa' |";
+		# jika tiada `` pada $medan
 		//array('z%like%','z1','z2','z2x','z3x','zin','zxin')
 		if($fix=='z%like%')
 			$jika .= " $di$medan like '%$cariApa%' $akhir\r";
