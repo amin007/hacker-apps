@@ -46,17 +46,19 @@ for ($y=0; $y < $row; $y++)
 	{
 		echo "\n\t\t" . '<td class="random '.$y.$x.'"></td>';
 	}
-echo "\n\t" . '</tr>' . "\n\t";
+echo "\n\t" . '</tr>';
 }
 ?></table>
 </div>
- 
+
 <hr>
 <input type="password" value="" class="password" placeholder="Password" maxlength="8">
- 
-<!-- Import jquery library -->
+
+<!--
+# masukkan js dan jquery di bawah ini
+###########################################################################################
+-->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
- 
 <script>
 $(document).ready(function()
 {
