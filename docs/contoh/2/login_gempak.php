@@ -23,35 +23,35 @@ svg {
 <body>
  
 <div>
-  <svg class="line line_1"><line x1="87" y1="10" x2="173" y2="10" style="stroke:rgb(255,0,0);" /></svg>
-  <svg class="line line_2"><line x1="173" y1="10" x2="44" y2="114" style="stroke:rgb(255,0,0);" /></svg>
-  <svg class="line line_3"><line x1="44" y1="117" x2="2" y2="62" style="stroke:rgb(255,0,0);" /></svg>
-  <svg class="line line_4"><line x1="2" y1="62" x2="87" y2="10" style="stroke:rgb(255,0,0);" /></svg>
+	<svg class="line line_1"><line x1="87" y1="10" x2="173" y2="10" style="stroke:rgb(255,0,0);" /></svg>
+	<svg class="line line_2"><line x1="173" y1="10" x2="44" y2="114" style="stroke:rgb(255,0,0);" /></svg>
+	<svg class="line line_3"><line x1="44" y1="117" x2="2" y2="62" style="stroke:rgb(255,0,0);" /></svg>
+	<svg class="line line_4"><line x1="2" y1="62" x2="87" y2="10" style="stroke:rgb(255,0,0);" /></svg>
+
+	<svg class="line line_5"><line x1="87" y1="218" x2="130" y2="270" style="stroke:rgb(255,0,0);" /></svg>
+	<svg class="line line_6"><line x1="130" y1="270" x2="87" y2="322" style="stroke:rgb(255,0,0);" /></svg>
+	<svg class="line line_7"><line x1="87" y1="322" x2="44" y2="270" style="stroke:rgb(255,0,0);" /></svg>
+	<svg class="line line_8"><line x1="44" y1="270" x2="87" y2="218" style="stroke:rgb(255,0,0);" /></svg>
+
+	<svg class="line line_9"><line x1="87" y1="10" x2="87" y2="218" style="stroke:rgb(255,0,0);" /></svg>
+	<svg class="line line_10"><line x1="173" y1="10" x2="130" y2="270" style="stroke:rgb(255,0,0);" /></svg>
+	<svg class="line line_11"><line x1="44" y1="117" x2="87" y2="322" style="stroke:rgb(255,0,0);" /></svg>
+	<svg class="line line_12"><line x1="2" y1="62" x2="44" y2="270" style="stroke:rgb(255,0,0);" /></svg>
  
-  <svg class="line line_5"><line x1="87" y1="218" x2="130" y2="270" style="stroke:rgb(255,0,0);" /></svg>
-  <svg class="line line_6"><line x1="130" y1="270" x2="87" y2="322" style="stroke:rgb(255,0,0);" /></svg>
-  <svg class="line line_7"><line x1="87" y1="322" x2="44" y2="270" style="stroke:rgb(255,0,0);" /></svg>
-  <svg class="line line_8"><line x1="44" y1="270" x2="87" y2="218" style="stroke:rgb(255,0,0);" /></svg>
+	<table><?php
+$column = 10;
+$row = 10;
  
-  <svg class="line line_9"><line x1="87" y1="10" x2="87" y2="218" style="stroke:rgb(255,0,0);" /></svg>
-  <svg class="line line_10"><line x1="173" y1="10" x2="130" y2="270" style="stroke:rgb(255,0,0);" /></svg>
-  <svg class="line line_11"><line x1="44" y1="117" x2="87" y2="322" style="stroke:rgb(255,0,0);" /></svg>
-  <svg class="line line_12"><line x1="2" y1="62" x2="44" y2="270" style="stroke:rgb(255,0,0);" /></svg>
- 
-  <table>
-    <?php
-    $column = 10;
-    $row = 10;
- 
-    for ($y=0; $y < $row; $y++) {
-      echo '<tr>';
-      for ($x=0; $x < $column; $x++) {
-        echo '<td class="random '.$y.$x.'"></td>';
-      }
-      echo '</tr>';
-    }
-    ?>
-  </table>
+for ($y=0; $y < $row; $y++)
+{
+	echo "\n\t" . '<tr>';
+	for ($x=0; $x < $column; $x++)
+	{
+		echo "\n\t\t" . '<td class="random '.$y.$x.'"></td>';
+	}
+echo "\n\t" . '</tr>' . "\n\t";
+}
+?></table>
 </div>
  
 <hr>
