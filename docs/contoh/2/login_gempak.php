@@ -1,25 +1,22 @@
-<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Login Gempak</title>
-</head>
- 
+<title>Login Gempak</title>
 <style>
 body {
-  background: #9E9E9E;
+	background: #9E9E9E;
 }
 td {
-  padding: 1rem;
+	padding: 1rem;
 }
 svg {
-  position: absolute;
-  padding: 1rem 1.2rem;
-  width: 175px;
-  height: 330px;
-  display: none;
+	position: absolute;
+	padding: 1rem 1.2rem;
+	width: 175px;
+	height: 330px;
+	display: none;
 }
 </style>
- 
+</head>
 <body>
  
 <div>
