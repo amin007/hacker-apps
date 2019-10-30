@@ -61,40 +61,45 @@ svg {
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
  
 <script>
-$(document).ready(function() {
-  window.setInterval(function() {
-    $(".random").each(function( index ) {
-      var random_number = Math.floor((Math.random() * 10) + 0);
-      $(this).text(random_number);
-    });
-  }, 100);
- 
-  $('.line').hide();
-  $(".password").keyup(function() {
-    var char_length = $(this).val().length;
- 
-    var line_no = char_length - 1;
-    $('.line_'+line_no).show("slow");
- 
-    if (char_length == 8) {
-      $('.line_8').show("slow");
-      $('.line_9').show("slow");
-      $('.line_10').show("slow");
-      $('.line_11').show("slow");
-      $('.line_12').show("slow");
-    }
- 
-    if (char_length < 8) {
-      $('.line_12').hide("slow");
-      $('.line_11').hide("slow");
-      $('.line_10').hide("slow");
-      $('.line_9').hide("slow");
-      $('.line_8').hide("slow");
- 
-      var line_no = char_length + 1;
-      $('.line_'+line_no).hide("slow");
-    }
-  });
+$(document).ready(function()
+{
+	window.setInterval(function()
+	{
+		$(".random").each(function( index )
+		{
+			var random_number = Math.floor((Math.random() * 10) + 0);
+			$(this).text(random_number);
+		});
+	}, 100);
+
+	$('.line').hide();
+	$(".password").keyup(function()
+	{
+		var char_length = $(this).val().length;
+		var line_no = char_length - 1;
+
+		$('.line_'+line_no).show("slow");
+
+		if (char_length == 8)
+		{
+			$('.line_8').show("slow");
+			$('.line_9').show("slow");
+			$('.line_10').show("slow");
+			$('.line_11').show("slow");
+			$('.line_12').show("slow");
+		}
+		if (char_length < 8)
+		{
+			$('.line_12').hide("slow");
+			$('.line_11').hide("slow");
+			$('.line_10').hide("slow");
+			$('.line_9').hide("slow");
+			$('.line_8').hide("slow");
+
+			var line_no = char_length + 1;
+			$('.line_'+line_no).hide("slow");
+		}
+	});
 });
 </script>
  
