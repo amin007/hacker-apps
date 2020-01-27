@@ -79,7 +79,7 @@ class Login extends \Aplikasi\Kitab\Kawal
 
 		# Pergi papar kandungan
 		//echo '<br>location: ' . URL . $this->_folder . '/rangkabaru/selesai';
-		header('location: ' . URL . ''); //*/
+		header('location:' . URL);//*/
 	}
 #-------------------------------------------------------------------------------------------------
 	function salah()
