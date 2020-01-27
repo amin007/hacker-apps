@@ -69,35 +69,6 @@ class Login extends \Aplikasi\Kitab\Kawal
 	}
 #=================================================================================================
 #-------------------------------------------------------------------------------------------------
-	function register()
-	{
-		# Pergi papar kandungan
-		//$this->semakPembolehubah($this->papar->mesej); # Semak data dulu
-		$this->paparKandungan('index', 'register');
-	}
-#-------------------------------------------------------------------------------------------------
-	function registerid()
-	{
-		# Set pemboleubah utama
-		list($myTable, $medan01, $medan02, $medan) = dpt_senarai('jadual_login');
-		$senarai = array($myTable);
-		# Bentuk tatasusunan
-		$posmen = $this->tanya->semakPOST($myTable, $senarai, $_POST);
-		$senaraiData = $this->tanya->ubahPosmen($posmen, $myTable);
-		# sql insert
-		//$this->tanya->tambahSqlBanyakNilai($myTable, $medan, $senaraiData); 
-		$this->tanya->tambahBanyakNilai($myTable, $medan, $senaraiData); 
-		//$this->log_sql($myTable, $medan, $senaraiData);
-		# Semak data
-			$this->debugData($_POST,'_POST');
-			$this->debugData($posmen,'posmen');
-			$this->debugData($senaraiData,'senaraiData');
-
-		# Pergi papar kandungan
-		//echo '<br>location: ' . URL . $this->_folder . '/rangkabaru/selesai';
-		header('location:' . URL);//*/
-	}
-#-------------------------------------------------------------------------------------------------
 	function salah()
 	{
 		# debug
@@ -115,7 +86,6 @@ class Login extends \Aplikasi\Kitab\Kawal
 #-------------------------------------------------------------------------------------------------
 	function semakid()
 	{
-		# debug $_POST
 		//echo '<hr>Nama class :' . __METHOD__ . '<hr>';
 		//$this->debugData($_POST,'_POST 01');
 
