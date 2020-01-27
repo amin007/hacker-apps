@@ -11,7 +11,6 @@ class Login_Tanya extends \Aplikasi\Kitab\Tanya
 #------------------------------------------------------------------------------------------------#
 	function dapatid($nama)
 	{
-		//echo '<pre>$_POST->'; print_r($_POST) . '</pre>| ';
 		echo '<pre>$nama->'; print_r($nama) . '</pre>| ';
 		//echo 'Kod:' . \Aplikasi\Kitab\RahsiaHash::rahsia('md5', $nama) . ': ';
 		//echo 'Kod:' . RahsiaHash::create('sha256', $_POST['password'], HASH_PASSWORD_KEY) . ': ';
@@ -40,12 +39,10 @@ class Login_Tanya extends \Aplikasi\Kitab\Tanya
 	{
 		$semakLogin = $this->db->prepare("
 			SELECT  $medan FROM  $jadual WHERE 
-			email = :username AND kataLaluan = :password");
+			email = :username ");
 
 		$semakLogin->execute(array(
-			':username' => $_POST['username'],
-			':password' => \Aplikasi\Kitab\RahsiaHash::rahsia('md5', $_POST['password'])
-			//':password' => \Aplikasi\Kitab\RahsiaHash::create('sha256', $_POST['password'], HASH_PASSWORD_KEY)
+			':username' => bersih($_POST['username']),
 		));
 
 		$semakLogin->debugDumpParams(); # semak $sth->debugDumpParams()
