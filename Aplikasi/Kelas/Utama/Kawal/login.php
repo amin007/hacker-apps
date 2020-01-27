@@ -130,17 +130,17 @@ class Login extends \Aplikasi\Kitab\Kawal
 			'apa' => ":$medan01"); # benda yang dicari
 		$p = array(":$medan01"=>$email);
 		#
-		return array($myTable, $medan, $carian, $p);
+		return array("`$myTable`", $medan, $carian, $p);
 	}
 #-------------------------------------------------------------------------------------------------
 	function loginid($myTable, $medan, $carian, $p)
 	{
 		//echo '<hr>Nama class :' . __METHOD__ . '<hr>';
 		# mula cari $cariID dalam $myJadual
-			$cariNama =
-				$this->tanya->cariSemuaData("`$myTable`", $medan, $carian, null, $p);
-				//$this->tanya->cariSql("`$myTable`", $medan, $carian, null, $p);
-				$kira = sizeof($cariNama);//*/
+		$cariNama =
+			$this->tanya->cariSemuaData($myTable, $medan, $carian, null, $p);
+			//$this->tanya->cariSql($myTable, $medan, $carian, null, $p);
+		$kira = sizeof($cariNama);//*/
 		# semak pembolehubah
 		//echo '<pre>Test $_POST->'; print_r($_POST); echo '</pre>';
 		//echo '<pre>password->'; print_r($password); echo '</pre>';
