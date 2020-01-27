@@ -8,8 +8,10 @@ class DB_Pdo extends \PDO
 	{
 		try
 		{
-			parent::__construct($DB_TYPE . ':host=' . $DB_HOST . ';dbname=' . $DB_NAME, $DB_USER, $DB_PASS);
+			parent::__construct($DB_TYPE . ':host=' . $DB_HOST . ';dbname=' . $DB_NAME
+			. ';charset=utf8', $DB_USER, $DB_PASS);
 			//parent::setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTIONS);
+			//https://www.barberriley.com/web-development/php/solved-pdo-message-malformed-utf-8-characters-possibly-incorrectly-encoded
 		}
 		catch (PDOException $e) 
 		{
@@ -20,7 +22,280 @@ class DB_Pdo extends \PDO
 		}
 	}
 #------------------------------------------------------------------------------------------------------------
-#============================================================================================================
+	/**
+	 * bigError()
+	 * @param papar $problem yang dialami
+	 * @exit
+	 */
+	public function bigError($sth,$problem)
+	{
+		//$sth->debugDumpParams(); # papar sql balik
+		$u = dpt_url();//echo '<pre>'; print_r($u);echo '</pre>';
+		$p = URL . $u[0] . '/' . $u[1];
+		# true flag returns val rather than print;
+		$errorInfo = print_r($problem, true);
+		$error  = 'PDO::errorInfo():';
+		$error .= '<pre>' . $errorInfo . '</pre>';
+		$error .= '<a href="' . $p . '">Kembali</a>';
+		echo $error; # do what you wish with this param, write to log file etc...
+		exit;
+	}
+#--------------------------------------------------------------------------------------------------
+	/**
+	 * selectSql
+	 * @param string $sql An SQL string
+	 * @param array $array Paramters to bind
+	 * @param constant $fetchMode A PDO Fetch mode
+	 * @return mixed
+	 */
+	public function selectSql($sql, $array = array(), $fetchMode = \PDO::FETCH_ASSOC)
+	{
+		echo '<hr><pre>'; print_r($sql);
+		$sth = $this->prepare($sql);
+		foreach ($array as $key => $value)
+		{
+			echo '<br>$sth->bindValue('.$key.', '.$value.')';
+			$sth->bindValue($key, $value);
+		}echo '</pre><hr>';
+
+		$sth->execute();
+		$problem = $sth->errorInfo(); # semak jika ada error
+		if($problem[0]=='00000')# pulangkan pembolehubah
+			return $sth->fetchAll($fetchMode);
+		else
+			$this->bigError($sth,$problem);//*/
+	}
+#--------------------------------------------------------------------------------------------------
+	/**
+	 * rowCount()
+	 * @param string $sql An SQL string
+	 * @param array $array Paramters to bind
+	 * @param constant $fetchMode A PDO Fetch mode
+	 * @return mixed
+	 */
+	public function rowCount($sql, $array = array(), $fetchMode = \PDO::FETCH_ASSOC)
+	{
+		//echo '<hr><pre>'; print_r($sql) . '</pre><hr>';
+		$sth = $this->prepare($sql);
+		foreach ($array as $key => $value)
+		{
+			$sth->bindValue("$key", $value);
+		}
+
+		$sth->execute();
+		$problem = $sth->errorInfo(); # semak jika ada error
+		if($problem[0]=='00000')# pulangkan pembolehubah
+			return $sth->rowCount(); //$sth->fetchAll($fetchMode);
+		else
+			$this->bigError($sth,$problem);//*/
+	}
+#--------------------------------------------------------------------------------------------------
+	/**
+	 * delete()
+	 * @param string $table
+	 * @param string $where
+	 * @param integer $limit
+	 * @return integer Affected Rows
+	 */
+	public function delete($table, $where, $limit = 1)
+	{
+		return $this->exec("DELETE FROM $table WHERE $where LIMIT $limit");
+	}
+#--------------------------------------------------------------------------------------------------
+	public function getColumnNames($table,$database)
+	{
+		# https://stackoverflow.com/questions/1526688/get-table-column-names-in-mysql
+		$col  = 'COLUMN_NAME,DATA_TYPE,CHARACTER_MAXIMUM_LENGTH as max,COLUMN_TYPE';
+		$sql  = ' SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS';
+		$sql .= ' WHERE table_schema = :database';
+		$sql .= ' AND table_name = :table';
+
+		//echo htmlentities($sql) . '<br>';
+
+		try {
+			$sth = $this->prepare($sql);
+			$sth->bindValue(':database', $database, \PDO::PARAM_STR);
+			$sth->bindValue(':table', $table, \PDO::PARAM_STR);
+			$sth->execute();
+			$output = array();
+			while($row = $sth->fetch(\PDO::FETCH_ASSOC))
+			{
+				$output[] = $row['COLUMN_NAME'];
+			}
+			return $output;
+		}
+		catch(PDOException $pe)
+		{
+			trigger_error('Could not connect to MySQL database. '
+			. $pe->getMessage() , E_USER_ERROR);
+		}
+	}
+#--------------------------------------------------------------------------------------------------
+#==================================================================================================
+#--------------------------------------------------------------------------------------------------
+	/**
+	 * bind()
+	 * @param pembolehubah yang ada tanda :
+	 * @value nilai yang sebenar
+	 * @value nilai automatik
+	 * @return $sth
+	 */
+	public function bind($param, $value, $type = null)
+	{
+		# https://www.geeksforgeeks.org/difference-between-bindparam-and-bindvalue-in-php/
+		$type = PDO::PARAM_STR;
+		/*if( is_null($type) ):
+			switch(true):
+				case is_int($value): $type = PDO::PARAM_INT; break;
+				case is_bool($value): $type = PDO::PARAM_BOOL; break;
+				case is_null($value): $type = PDO::PARAM_NULL; break;
+				default : $type = PDO::PARAM_STR;
+			endswitch;
+		endif;*/
+		# semak pembolehubah
+		echo '$sth->bindValue('.$key.', '.$value.', '.$type.')';
+		//$sth->bindValue($param, $value, $type);
+		//$sth->bindParam($key, $value);
+	}
+#--------------------------------------------------------------------------------------------------
+	public static function debugType($key, $value, $type = null)
+	{
+		if( is_null($type) ):
+			switch(true):
+				case is_int($value): $type = \PDO::PARAM_INT; break;
+				case is_bool($value): $type = \PDO::PARAM_BOOL; break;
+				case is_null($value): $type = \PDO::PARAM_NULL; break;
+				default : $type = \PDO::PARAM_STR;
+			endswitch;
+		endif;
+
+		return $type;//$type = \Aplikasi\Kitab\DB_Pdo::debugType($key,$value);
+	}
+#--------------------------------------------------------------------------------------------------
+	public static function debugBind($sth,$sql,$array)
+	{
+		if($array == null):
+		else:
+			echo '<hr><pre>'; print_r($sql);
+			foreach ($array as $key => $value)
+			{
+				$val = (!empty($value) ? $value : NULL);
+				$type = \Aplikasi\Kitab\DB_Pdo::debugType($key,$val);
+				echo "<br>\$sth->bindValue($key, $val, $type)";
+				$sth->bindValue($key, $val, $type);
+			}echo '</pre><hr>';
+		endif;
+		# echo sahaja
+	}
+#--------------------------------------------------------------------------------------------------
+	public static function checkBind($sth,$sql,$array)
+	{
+		if($array == null):
+		else:
+			foreach ($array as $key => $value)
+			{
+				$val = (!empty($value) ? $value : NULL);
+				$type = \Aplikasi\Kitab\DB_Pdo::debugType($key,$val);
+				$sth->bindValue($key, $val, $type);
+			}
+		endif;
+		#
+	}
+#--------------------------------------------------------------------------------------------------
+	/**
+	 * selectDebug()
+	 * @param string $sql An SQL string
+	 * @param array $array Paramters to bind
+	 * @param constant $fetchMode A PDO Fetch mode
+	 * @return mixed
+	 */
+	public function selectDebug($sql, $array = array(), $fetchMode = \PDO::FETCH_ASSOC)
+	{
+		$sth = $this->prepare($sql);
+		\Aplikasi\Kitab\DB_Pdo::debugBind($sth,$sql,$array);
+		$sth->execute();
+		$problem = $sth->errorInfo(); # semak jika ada error
+		if($problem[0]=='00000')# pulangkan pembolehubah
+			return $sth->fetchAll($fetchMode);
+		else
+			$this->bigError($sth,$problem);//*/
+	}
+#--------------------------------------------------------------------------------------------------
+	/**
+	 * selectAll
+	 * @param string $sql An SQL string
+	 * @param array $array Paramters to bind
+	 * @param constant $fetchMode A PDO Fetch mode
+	 * @return mixed
+	 */
+	public function selectAll($sql, $array = array(), $fetchMode = \PDO::FETCH_ASSOC)
+	{
+		//echo '<hr><pre>'; print_r($sql); echo '</pre><hr>';
+		$sth = $this->prepare($sql);
+		\Aplikasi\Kitab\DB_Pdo::checkBind($sth,$sql,$array);
+		$sth->execute();
+		# dapatkan jenis medan dalam jadual ini
+			$meta = null;
+		# semak error jika ada
+		$problem = $sth->errorInfo(); # semak jika ada error
+		if($problem[0]=='00000')# pulangkan pembolehubah
+			return array($sth->fetchAll($fetchMode),$meta);
+		else
+			$this->bigError($sth,$problem);//*/
+	}
+#--------------------------------------------------------------------------------------------------
+	/**
+	 * selectAllMeta
+	 * @param string $sql An SQL string
+	 * @param array $array Paramters to bind
+	 * @param constant $fetchMode A PDO Fetch mode
+	 * @return mixed
+	 */
+	public function selectAllMeta($sql, $array = array(), $fetchMode = \PDO::FETCH_ASSOC)
+	{
+		//echo '<hr><pre>'; print_r($sql); echo '</pre><hr>';
+		$sth = $this->prepare($sql);
+		\Aplikasi\Kitab\DB_Pdo::checkBind($sth,$sql,$array);
+		$sth->execute();
+		# dapatkan jenis medan dalam jadual ini
+		for($mula = 0; $mula < $sth->columnCount(); $mula++):
+			$meta[$mula] = $sth->getColumnMeta($mula);
+		endfor;
+		# semak error jika ada
+		$problem = $sth->errorInfo(); # semak jika ada error
+		if($problem[0]=='00000')# pulangkan pembolehubah
+			return array($sth->fetchAll($fetchMode),$meta);
+		else
+			$this->bigError($sth,$problem);//*/
+	}
+#--------------------------------------------------------------------------------------------------
+	/**
+	 * insert()
+	 * @param string $sql An SQL string
+	 * @param array $array Paramters to bind
+	 * @param constant $fetchMode A PDO Fetch mode
+	 * @return mixed
+	 */
+	public function insert($sql, $array = array(), $fetchMode = \PDO::FETCH_ASSOC)
+	{
+		//echo '<hr><pre>'; print_r($sql); echo '</pre><hr>';
+		$sth = $this->prepare($sql);
+		\Aplikasi\Kitab\DB_Pdo::checkBind($sth,$sql,$array);
+		$sth->execute();
+		# dapatkan jenis medan dalam jadual ini
+		$meta[] = null;
+		/*for($mula = 0; $mula < $sth->columnCount(); $mula++):
+			$meta[$mula] = $sth->getColumnMeta($mula);
+		endfor;//*/
+		# semak error jika ada
+		$problem = $sth->errorInfo(); # semak jika ada error
+		if($problem[0]=='00000')# pulangkan pembolehubah
+			return array($sth->fetchAll($fetchMode),$meta);
+		else
+			$this->bigError($sth,$problem);//*/
+	}
+#--------------------------------------------------------------------------------------------------
+#==================================================================================================
 }
 
 /*
@@ -47,7 +322,7 @@ class DB_Pdo extends \PDO
 				# Insert into fields array
 				$colname = $col['Field'];
 				$this->_fields[$colname] = $col;
-				if($col['Key'] == "PRI" && empty($primaryKey)) 
+				if($col['Key'] == "PRI" && empty($primaryKey))
 					$this->_primaryKey = $colname;
 
 				# Set field types
