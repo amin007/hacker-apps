@@ -84,11 +84,18 @@ class Login extends \Aplikasi\Kitab\Kawal
 		$this->paparKandungan('index', 'salah', $noInclude=1);
 	}
 #-------------------------------------------------------------------------------------------------
+	function semakPassword($data)
+	{
+		$passwordAsal = bersih($_POST['password']);
+		$password = $data[0]['kataRahsia'];
+
+	}
+#-------------------------------------------------------------------------------------------------
 	function semakid()
 	{
 		//echo '<hr>Nama class :' . __METHOD__ . '<hr>';
 		//$this->debugData($_POST,'_POST 01');
-		$this->tanya->dapatid($_POST['password']);
+		//$this->tanya->dapatid($_POST['password']);
 		# semak data $this->tanya->ujiID(); $this->tanya->semakid();
 		list($jadual, $medan, $carian, $p) = $this->loginSemak();
 		$this->loginid($jadual, $medan, $carian, $p);
@@ -107,13 +114,18 @@ class Login extends \Aplikasi\Kitab\Kawal
 		//echo '<hr>Nama class :' . __METHOD__ . '<hr>';
 		# semak data $_POST
 		list($myTable, $medan01, $medan02, $medan) = dpt_senarai('jadual_login');
+		$pecah = explode('@', $medan01);
 		$email = bersih($_POST['username']);
 		$passwordAsal = bersih($_POST['password']);
 		# bentuk tatasusunan baru
-		$carian[] = array('fix'=>':=', # cari x= atau %like% atau or(x=)
+		$carian[] = array('fix'=>':=', # cari x= atau %like% atau or2(:=)
 			'atau'=>'WHERE', # WHERE / OR / AND
-			'medan' => $medan01, # cari dalam medan apa
+			'medan' => $pecah[0], # cari dalam medan apa
 			'apa' => ":$medan01"); # benda yang dicari
+		/*$carian[] = array('fix'=>':=', # cari x= atau %like% atau or2(:=)
+			'atau'=>'OR', # WHERE / OR / AND
+			'medan' => $pecah[1], # cari dalam medan apa
+			'apa' => ":$medan01"); # benda yang dicari//*/
 		$p = array(":$medan01"=>$email);
 		#
 		return array($myTable, $medan, $carian, $p);
@@ -126,14 +138,12 @@ class Login extends \Aplikasi\Kitab\Kawal
 		list($cariNama,$meta) =
 			$this->tanya->cariSemuaData($myTable, $medan, $carian, null, $p);
 			//$this->tanya->cariSql($myTable, $medan, $carian, null, $p);
-		$passwordAsal = bersih($_POST['password']);
-		$password = $cariNama[0]['kataRahsia'];
-		$kira = sizeof($cariNama);//*/
+		$kira = $this->semakPassword($data);//*/
 		# semak pembolehubah
 		$this->debugData($_POST,'_POST');
 		//$this->debugData($password,'password');
 		$this->debugData($cariNama,'cariNama');
-		$this->debugData($kira,'kira');
+		//$this->debugData($kira,'kira');*/
 
 		//$this->kunciPintu($kira, $cariNama); # pilih pintu masuk
 	}
