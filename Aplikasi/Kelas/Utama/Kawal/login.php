@@ -88,9 +88,7 @@ class Login extends \Aplikasi\Kitab\Kawal
 	{
 		//echo '<hr>Nama class :' . __METHOD__ . '<hr>';
 		//$this->debugData($_POST,'_POST 01');
-
-		# semak data $this->tanya->ujiID(); 
-		//$this->tanya->semakid();
+		# semak data $this->tanya->ujiID(); $this->tanya->semakid();
 		list($jadual, $medan, $carian, $p) = $this->loginSemak();
 		$this->loginid($jadual, $medan, $carian, $p);
 		//*/
@@ -105,6 +103,7 @@ class Login extends \Aplikasi\Kitab\Kawal
 #-------------------------------------------------------------------------------------------------
 	function loginSemak()
 	{
+		//echo '<hr>Nama class :' . __METHOD__ . '<hr>';
 		# semak data $_POST
 		list($myTable, $medan01, $medan02, $medan) = dpt_senarai('jadual_login');
 		$email = bersih($_POST['username']);
@@ -121,19 +120,19 @@ class Login extends \Aplikasi\Kitab\Kawal
 #-------------------------------------------------------------------------------------------------
 	function loginid($myTable, $medan, $carian, $p)
 	{
-		//echo '<hr>Nama class :' . __METHOD__ . '<hr>';
+		echo '<hr>Nama class :' . __METHOD__ . '<hr>';
 		# mula cari $cariID dalam $myJadual
 		$cariNama =
-			$this->tanya->cariSemuaData($myTable, $medan, $carian, null, $p);
-			//$this->tanya->cariSql($myTable, $medan, $carian, null, $p);
+			//$this->tanya->cariSemuaData($myTable, $medan, $carian, null, $p);
+			$this->tanya->cariSql($myTable, $medan, $carian, null, $p);
 		$kira = sizeof($cariNama);//*/
 		# semak pembolehubah
 		$this->debugData($_POST,'_POST');
-		$this->debugData($password,'password');
+		//$this->debugData($password,'password');
 		$this->debugData($cariNama,'cariNama');
 		$this->debugData($kira,'kira');
 
-		$this->kunciPintu($kira, $cariNama); # pilih pintu masuk
+		//$this->kunciPintu($kira, $cariNama); # pilih pintu masuk
 	}
 #-------------------------------------------------------------------------------------------------
 	function kunciPintu($kira, $data)
