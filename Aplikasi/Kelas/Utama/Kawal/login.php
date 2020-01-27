@@ -78,9 +78,6 @@ class Login extends \Aplikasi\Kitab\Kawal
 #-------------------------------------------------------------------------------------------------
 	function registerid()
 	{
-		# debug $_POST
-		//echo '<pre>Test $_POST->'; print_r($_POST); echo '</pre>';
-
 		# Set pemboleubah utama
 		list($myTable, $medan01, $medan02, $medan) = dpt_senarai('jadual_login');
 		$senarai = array($myTable);
@@ -92,9 +89,9 @@ class Login extends \Aplikasi\Kitab\Kawal
 		$this->tanya->tambahBanyakNilai($myTable, $medan, $senaraiData); 
 		//$this->log_sql($myTable, $medan, $senaraiData);
 		# Semak data
-			//echo '<pre>$_POST='; print_r($_POST); echo '</pre>';
-			//echo '<pre>$posmen='; print_r($posmen); echo '</pre>';
-			//echo '<pre>$senaraiData='; print_r($senaraiData); echo '</pre>';
+			$this->debugData($_POST,'_POST');
+			$this->debugData($posmen,'posmen');
+			$this->debugData($senaraiData,'senaraiData');
 
 		# Pergi papar kandungan
 		//echo '<br>location: ' . URL . $this->_folder . '/rangkabaru/selesai';
@@ -120,7 +117,7 @@ class Login extends \Aplikasi\Kitab\Kawal
 	{
 		# debug $_POST
 		//echo '<hr>Nama class :' . __METHOD__ . '<hr>';
-		//echo '<pre>Test $_POST->'; print_r($_POST); echo '</pre>';
+		//$this->debugData($_POST,'_POST 01');
 
 		# semak data $this->tanya->ujiID(); 
 		//$this->tanya->semakid();
