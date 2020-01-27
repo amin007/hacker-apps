@@ -6,11 +6,16 @@ class DB_Pdo extends \PDO
 #------------------------------------------------------------------------------------------------------------
 	public function __construct($DB_TYPE, $DB_HOST, $DB_NAME, $DB_USER, $DB_PASS)
 	{
+		$options = [
+			\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+			\PDO::ATTR_CASE => \PDO::CASE_NATURAL,
+			\PDO::ATTR_ORACLE_NULLS => \PDO::NULL_EMPTY_STRING
+		];
 		try
 		{
 			parent::__construct($DB_TYPE . ':host=' . $DB_HOST . ';dbname=' . $DB_NAME
 			. ';charset=utf8', $DB_USER, $DB_PASS);
-			//parent::setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTIONS);
+			//parent::setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 			//https://www.barberriley.com/web-development/php/solved-pdo-message-malformed-utf-8-characters-possibly-incorrectly-encoded
 		}
 		catch (PDOException $e) 
@@ -144,16 +149,16 @@ class DB_Pdo extends \PDO
 	{
 		# https://www.geeksforgeeks.org/difference-between-bindparam-and-bindvalue-in-php/
 		$type = PDO::PARAM_STR;
-		/*if( is_null($type) ):
+		if( is_null($type) ):
 			switch(true):
 				case is_int($value): $type = PDO::PARAM_INT; break;
 				case is_bool($value): $type = PDO::PARAM_BOOL; break;
 				case is_null($value): $type = PDO::PARAM_NULL; break;
 				default : $type = PDO::PARAM_STR;
 			endswitch;
-		endif;*/
+		endif;//*/
 		# semak pembolehubah
-		echo '$sth->bindValue('.$key.', '.$value.', '.$type.')';
+		echo '<br>well $sth->bindValue('.$key.', '.$value.', '.$type.')';
 		//$sth->bindValue($param, $value, $type);
 		//$sth->bindParam($key, $value);
 	}
@@ -181,7 +186,7 @@ class DB_Pdo extends \PDO
 			{
 				$val = (!empty($value) ? $value : NULL);
 				$type = \Aplikasi\Kitab\DB_Pdo::debugType($key,$val);
-				echo "<br>\$sth->bindValue($key, $val, $type)";
+				echo "<br>well \$sth->bindValue($key, $val, $type)";
 				$sth->bindValue($key, $val, $type);
 			}echo '</pre><hr>';
 		endif;
