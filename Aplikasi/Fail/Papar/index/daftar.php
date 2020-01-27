@@ -89,12 +89,14 @@ class="btn btn-link"
 <div class="tab-content" id="myTabContent">
 	<div class="tab-pane fade show active" id="masuklah" role="tabpanel" aria-labelledby="home-tab">
 	<!--*********************************************************************************************************************************************** -->
-		<form method="POST" action="<?php echo URL ?>masuklah">
+		<form method="POST" action="<?php echo URL ?>login/semakid">
 		<h1 class="h3 mb-3 font-weight-normal">Daftar Masuk</h1>
 		<label for="inputText" class="sr-only">Email address / Handphone</label>
-		<input type="text" name="username" id="inputText" class="form-control" placeholder="Email address / Handphone" required autofocus>
+		<input type="text" name="username" id="inputText" class="form-control"
+		placeholder="Email address / Handphone" required autofocus>
 		<label for="inputPassword" class="sr-only">Password</label>
-		<input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+		<input type="password" name="password" id="inputPassword" class="form-control"
+		placeholder="Password" required>
 		<div class="checkbox mb-3"><label><input type="checkbox" value="remember-me">
 			Ingat Daku Dalam Doamu
 		</label></div>
