@@ -231,7 +231,8 @@ class Tanya
 	{
 		//echo '<pre>$param::'; print_r($param); echo '</pre><br>';
 		$sql = $this->sql->bentukSqlSelect($myTable, $medan, $carian, $susun);
-		$result = $this->db->selectAll($sql, $param);
+		$result = $this->db->selectAllMeta($sql, $param);
+		//$result = $this->db->selectAll($sql, $param);
 		//$result = $this->db->selectDebug($sql, $param);
 		//echo json_encode($result);
 		//echo '<pre>$sql::' . htmlentities($sql) . '</pre><br>';
