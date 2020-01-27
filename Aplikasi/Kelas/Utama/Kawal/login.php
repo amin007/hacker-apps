@@ -121,18 +121,13 @@ class Login extends \Aplikasi\Kitab\Kawal
 		//echo '<hr>Nama class :' . __METHOD__ . '<hr>';
 		# semak data $_POST
 		list($myTable, $medan01, $medan02, $medan) = dpt_senarai('jadual_login');
-		$email = $_POST['username'];
-		$passwordAsal = $_POST['password'];
-		$password = \Aplikasi\Kitab\RahsiaHash::rahsia('md5', $passwordAsal);
+		$email = bersih($_POST['username']);
+		$passwordAsal = bersih($_POST['password']);
 		# semak database
 			$carian[] = array('fix'=>'or(x=)', # cari x= atau %like%
 				'atau'=>'WHERE', # WHERE / OR / AND
 				'medan' => $medan01, # cari dalam medan apa
 				'apa' => $email); # benda yang dicari
-			$carian[] = array('fix'=>'like', # cari x= atau %like%
-				'atau'=>'AND', # WHERE / OR / AND
-				'medan' => $medan02, # cari dalam medan apa
-				'apa' => $password); # benda yang dicari
 		# mula cari $cariID dalam $myJadual
 			$cariNama =
 				$this->tanya->cariSemuaData("`$myTable`", $medan, $carian, null);
