@@ -36,9 +36,6 @@ class Login_Tanya extends \Aplikasi\Kitab\Tanya
 			cariSql($jadual, $medan, $cari, $susun = null);
 	}
 #------------------------------------------------------------------------------------------------#
-	function semak2id($medan = 'namaPenuh,namaPendek,email,kataLaluan,level', $jadual = 'nama_pengguna')
-	{}
-#------------------------------------------------------------------------------------------------#
 	function semakid($medan = 'namaPenuh,namaPendek,email,kataLaluan,level', $jadual = 'nama_pengguna')
 	{
 		$semakLogin = $this->db->prepare("
@@ -54,7 +51,6 @@ class Login_Tanya extends \Aplikasi\Kitab\Tanya
 		$semakLogin->debugDumpParams(); # semak $sth->debugDumpParams()
 		$data = $semakLogin->fetch(); # dapatkan medan terlibat
 		$kira = $semakLogin->rowCount(); # kira jumlah data
-		//*/
 		//$data = $this->data_contoh(0); # data olok-olok | dapatkan medan terlibat
 		//$kira = $this->data_contoh(1); # data olok-olok | kira jumlah data	
 		echo ' |<pre>$data='; print_r($data); echo '</pre> | $kira=' . $kira;
