@@ -41,6 +41,25 @@ class Login extends \Aplikasi\Kitab\Kawal
 		echo '</pre>|';//*/
 	}
 ##------------------------------------------------------------------------------------------------
+	public function debugData($senarai,$jadual,$p='0')
+	{
+		# untuk kesan masalah dalam tatasusunan biasa
+		if(!isset($senarai)):
+			echo '<pre>$' . $jadual . '=> tidak wujud</pre><hr>';
+		elseif(empty($senarai)):
+			echo '<pre>$' . $jadual . '=> tidak ada nilai</pre><hr>';
+		else:
+			$jadual .= is_array($senarai) ? ' =><br>' : ' = ';
+			echo '<pre>$' . $jadual;
+			if($p == '0') print_r($senarai);
+			if($p == '1') var_export($senarai);
+			echo '</pre><hr>';//*/
+		endif;
+		//$this->debugData($ujian,'ujian',0);
+		#http://php.net/manual/en/function.var-export.php
+		#http://php.net/manual/en/function.print-r.php
+	}
+##------------------------------------------------------------------------------------------------
 	function logout()
 	{
 		//echo '<pre>sebelum:'; print_r($_SESSION); echo '</pre>';
