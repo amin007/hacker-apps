@@ -105,8 +105,8 @@ class Login extends \Aplikasi\Kitab\Kawal
 
 		# semak data $this->tanya->ujiID(); 
 		//$this->tanya->semakid();
-		list($jadual, $medan, $carian) = $this->loginSemak();
-		$this->loginid($jadual, $medan, $carian);
+		list($jadual, $medan, $carian, $p) = $this->loginSemak();
+		$this->loginid($jadual, $medan, $carian, $p);
 		//*/
 	}
 #-------------------------------------------------------------------------------------------------
@@ -123,22 +123,23 @@ class Login extends \Aplikasi\Kitab\Kawal
 		list($myTable, $medan01, $medan02, $medan) = dpt_senarai('jadual_login');
 		$email = bersih($_POST['username']);
 		$passwordAsal = bersih($_POST['password']);
-		# semak database
+		# bentuk tatasusunan baru
 		$carian[] = array('fix'=>'or(x=)', # cari x= atau %like%
 			'atau'=>'WHERE', # WHERE / OR / AND
 			'medan' => $medan01, # cari dalam medan apa
-			'apa' => $email); # benda yang dicari
+			'apa' => ":$medan01"); # benda yang dicari
+		$p = array(":$medan01"=>$email);
 		#
-		return array($myTable, $medan, $carian);
+		return array($myTable, $medan, $carian, $p);
 	}
 #-------------------------------------------------------------------------------------------------
-	function loginid($myTable, $medan, $carian)
+	function loginid($myTable, $medan, $carian, $p)
 	{
 		//echo '<hr>Nama class :' . __METHOD__ . '<hr>';
 		# mula cari $cariID dalam $myJadual
 			$cariNama =
-				$this->tanya->cariSemuaData("`$myTable`", $medan, $carian, null);
-				//$this->tanya->cariSql("`$myTable`", $medan, $carian, null);
+				$this->tanya->cariSemuaData("`$myTable`", $medan, $carian, null, $p);
+				//$this->tanya->cariSql("`$myTable`", $medan, $carian, null, $p);
 				$kira = sizeof($cariNama);//*/
 		# semak pembolehubah
 		//echo '<pre>Test $_POST->'; print_r($_POST); echo '</pre>';
