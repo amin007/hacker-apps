@@ -116,18 +116,13 @@ class Login extends \Aplikasi\Kitab\Kawal
 		$this->paparKandungan('index', 'login2', $noInclude=1);
 	}
 #-------------------------------------------------------------------------------------------------
+	function loginSemak()
+	{
+	}
+#-------------------------------------------------------------------------------------------------
 	function loginid()
 	{
 		//echo '<hr>Nama class :' . __METHOD__ . '<hr>';
-		# semak data $_POST
-		list($myTable, $medan01, $medan02, $medan) = dpt_senarai('jadual_login');
-		$email = bersih($_POST['username']);
-		$passwordAsal = bersih($_POST['password']);
-		# semak database
-			$carian[] = array('fix'=>'or(x=)', # cari x= atau %like%
-				'atau'=>'WHERE', # WHERE / OR / AND
-				'medan' => $medan01, # cari dalam medan apa
-				'apa' => $email); # benda yang dicari
 		# mula cari $cariID dalam $myJadual
 			$cariNama =
 				$this->tanya->cariSemuaData("`$myTable`", $medan, $carian, null);
