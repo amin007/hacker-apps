@@ -124,10 +124,10 @@ class Login extends \Aplikasi\Kitab\Kawal
 		$email = bersih($_POST['username']);
 		$passwordAsal = bersih($_POST['password']);
 		# semak database
-			$carian[] = array('fix'=>'or(x=)', # cari x= atau %like%
-				'atau'=>'WHERE', # WHERE / OR / AND
-				'medan' => $medan01, # cari dalam medan apa
-				'apa' => $email); # benda yang dicari
+		$carian[] = array('fix'=>'or(x=)', # cari x= atau %like%
+			'atau'=>'WHERE', # WHERE / OR / AND
+			'medan' => $medan01, # cari dalam medan apa
+			'apa' => $email); # benda yang dicari
 		#
 		return array($myTable, $medan, $carian);
 	}
