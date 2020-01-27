@@ -105,7 +105,8 @@ class Login extends \Aplikasi\Kitab\Kawal
 
 		# semak data $this->tanya->ujiID(); 
 		//$this->tanya->semakid();
-		$this->loginid();
+		list($jadual, $medan, $carian) = $this->loginSemak();
+		$this->loginid($jadual, $medan, $carian);
 		//*/
 	}
 #-------------------------------------------------------------------------------------------------
@@ -118,9 +119,20 @@ class Login extends \Aplikasi\Kitab\Kawal
 #-------------------------------------------------------------------------------------------------
 	function loginSemak()
 	{
+		# semak data $_POST
+		list($myTable, $medan01, $medan02, $medan) = dpt_senarai('jadual_login');
+		$email = bersih($_POST['username']);
+		$passwordAsal = bersih($_POST['password']);
+		# semak database
+			$carian[] = array('fix'=>'or(x=)', # cari x= atau %like%
+				'atau'=>'WHERE', # WHERE / OR / AND
+				'medan' => $medan01, # cari dalam medan apa
+				'apa' => $email); # benda yang dicari
+		#
+		return array($myTable, $medan, $carian);
 	}
 #-------------------------------------------------------------------------------------------------
-	function loginid()
+	function loginid($myTable, $medan, $carian)
 	{
 		//echo '<hr>Nama class :' . __METHOD__ . '<hr>';
 		# mula cari $cariID dalam $myJadual
