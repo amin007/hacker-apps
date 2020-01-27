@@ -257,9 +257,10 @@ class Tanya
 		return $sql;
 	}
 	#---------------------------------------------------------------------------------------------
-	public function cariSql($myTable, $medan, $carian, $susun)
+	public function cariSql($myTable, $medan, $carian, $susun, $param)
 	{
 		$sql = $this->sql->bentukSqlSelect($myTable, $medan, $carian, $susun);
+		$result = $this->db->selectDebug($sql, $param);
 
 		echo '<pre>DB_NAME:' . DB_NAME . '';
 		echo '<br>sql:' . htmlentities($sql) . '</pre><br>';
