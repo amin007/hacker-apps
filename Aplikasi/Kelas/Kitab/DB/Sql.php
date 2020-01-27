@@ -21,10 +21,15 @@ class Sql
 #-------------------------------------------------------------------------------------------------
 	private function jikaTitikBertindih($fix,$di,$medan,$cariApa,$akhir)
 	{
+		//echo '<hr>Nama class :' . __METHOD__ . '<hr>';
 		$jika = null; //echo "\r($fix) +> $di $medan -> '$cariApa' |";
 		//array(':=',':like:',':like')
+		$pecah = explode('@', $medan);
 		if($fix==':=')
 			$jika .= " $di`$medan` = $cariApa $akhir\r";
+		elseif($fix=='or2(:=)')
+			$jika .= " $di(`" . $pecah[0] . "` = $cariApa "
+			. " OR `" . $pecah[1] . "` = $cariApa)\r";
 		elseif($fix==':like:')
 			$jika .= " $di`$medan` like CONCAT('%', $cariApa, '%') $akhir\r";
 
@@ -88,7 +93,7 @@ class Sql
 	{
 		$jika = null; //echo "\r($fix) +> $di $medan -> '$cariApa' |";
 		//array('or(x=)','or(%like%)')
-		$pecah = explode('|', $medan);
+		$pecah = explode('@', $medan);
 		if($fix=='or(x=)') //" $di (`$cari`='$apa' OR msic2000='$apa')\r" :
 			$jika .= " $di(`" . $pecah[0] . "` = '$cariApa'"
 			. " OR `" . $pecah[1] . "` = '$cariApa')\r";
@@ -152,7 +157,7 @@ class Sql
 		if($fix==null) $dimana .= null;
 		elseif($cariApa==null OR $fix=='xnull')
 			$dimana .= $this->jikaKosong($fix,$di,$medan,$cariApa,$akhir);
-		elseif( in_array($fix,array(':=',':like:')) )
+		elseif( in_array($fix,array(':=','or2(:=)',':like:')) )
 			$dimana .= $this->jikaTitikBertindih($fix,$di,$medan,$cariApa,$akhir);
 		elseif( in_array($fix,array('x=','x!=','x<=','x>=')) )
 			$dimana .= $this->jikaSamaDgn($fix,$di,$medan,$cariApa,$akhir);
@@ -173,6 +178,7 @@ class Sql
 #-------------------------------------------------------------------------------------------------
 	public function dimana($carian)
 	{
+		//echo '<hr>Nama class :' . __METHOD__ . '<hr>';
 		$where = null; //echo '<pre>'; print_r($carian); echo '</pre>';
 		if($carian==null || $carian=='' || empty($carian) ):
 			$where .= null;
