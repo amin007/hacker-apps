@@ -38,11 +38,11 @@ class Login_Tanya extends \Aplikasi\Kitab\Tanya
 	function semakid($medan = 'namaPenuh,namaPendek,email,kataLaluan,level', $jadual = 'nama_pengguna')
 	{
 		$semakLogin = $this->db->prepare("
-			SELECT  $medan FROM  $jadual WHERE 
-			email = :username ");
+			SELECT $medan FROM  $jadual WHERE
+			email = :username or nohp = :username ");
 
 		$semakLogin->execute(array(
-			':username' => bersih($_POST['username']),
+			':username' => bersih($_POST['username'])
 		));
 
 		$semakLogin->debugDumpParams(); # semak $sth->debugDumpParams()
