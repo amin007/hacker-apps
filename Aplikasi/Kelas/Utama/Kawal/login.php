@@ -161,10 +161,10 @@ class Login extends \Aplikasi\Kitab\Kawal
 			//$this->tanya->cariSql($myTable, $medan, $carian, null, $p);
 		$kira = sizeof($cariNama);//*/
 		# semak pembolehubah
-		//echo '<pre>Test $_POST->'; print_r($_POST); echo '</pre>';
-		//echo '<pre>password->'; print_r($password); echo '</pre>';
-		/*echo '<pre>$cariNama::'; print_r($cariNama); echo '</pre>';
-		echo '<hr>$data->' . sizeof($cariNama) . '<hr>';//*/
+		$this->debugData($_POST,'_POST');
+		$this->debugData($password,'password');
+		$this->debugData($cariNama,'cariNama');
+		$this->debugData($kira,'kira');
 
 		$this->kunciPintu($kira, $cariNama); # pilih pintu masuk
 	}
