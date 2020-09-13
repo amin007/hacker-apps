@@ -11,6 +11,12 @@ include 'test1_process.php';
 </head>
 <body>
 <!-- ============================================================================================ -->
+<?php
+list($ciphers,$cipher_aliases) = jenisAlgorithmDaa();
+debugValue($ciphers, 'ciphers');
+debugValue($cipher_aliases, 'cipher_aliases');
+?>
+<!-- ============================================================================================ -->
 <div class="container">
 <div class="row">
 	<div class="col-12"><h1>Utility to encrypt/decrypt a file</h1></div>
